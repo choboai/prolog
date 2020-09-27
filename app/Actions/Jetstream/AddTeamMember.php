@@ -14,6 +14,7 @@ class AddTeamMember implements AddsTeamMembers
     /**
      * Add a new team member to the given team.
      *
+     * @psalm-suppress TooManyArguments
      * @param  mixed  $user
      * @param  mixed  $team
      * @param  string  $email
@@ -37,6 +38,7 @@ class AddTeamMember implements AddsTeamMembers
     /**
      * Validate the add member operation.
      *
+     * @psalm-suppress UndefinedInterfaceMethod
      * @param  mixed  $team
      * @param  string  $email
      * @param  string|null  $role

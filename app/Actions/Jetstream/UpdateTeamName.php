@@ -11,6 +11,7 @@ class UpdateTeamName implements UpdatesTeamNames
     /**
      * Validate and update the given team's name.
      *
+     * @psalm-suppress UndefinedInterfaceMethod
      * @param  mixed  $user
      * @param  mixed  $team
      * @param  array  $input

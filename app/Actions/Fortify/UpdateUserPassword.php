@@ -13,6 +13,7 @@ class UpdateUserPassword implements UpdatesUserPasswords
     /**
      * Validate and update the user's password.
      *
+     * @psalm-suppress UndefinedInterfaceMethod
      * @param  mixed  $user
      * @param  array  $input
      * @return void
