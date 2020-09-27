@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePrologFilesTable extends Migration
+class CreateAtomsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class CreatePrologFilesTable extends Migration
      */
     public function up()
     {
-        Schema::create('prolog_files', function (Blueprint $table) {
+        Schema::create('atoms', function (Blueprint $table) {
             $table->id();
+            $table->string('literal');
+            $table->foreignId('predicate_id')->constrained('predicates');
+            $table->foreignId('predicates_list_id')->constrained('predicates');
             $table->timestamps();
         });
     }
@@ -26,6 +29,6 @@ class CreatePrologFilesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('prolog_files');
+        Schema::dropIfExists('atoms');
     }
 }

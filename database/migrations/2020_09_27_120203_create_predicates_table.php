@@ -15,6 +15,8 @@ class CreatePredicatesTable extends Migration
     {
         Schema::create('predicates', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('clause_id')->constrained();
+            $table->foreignId('program_id')->constrained();
             $table->timestamps();
         });
     }

@@ -15,6 +15,7 @@ class CreateClausesTable extends Migration
     {
         Schema::create('clauses', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('program_id')->constrained();
             $table->timestamps();
         });
     }
