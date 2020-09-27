@@ -6,7 +6,7 @@ jobs:
   laravel-tests:
     runs-on: ${{ matrix.os }}
     strategy:
-      fail-fast: true
+      fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-latest]
         php: [7.3, 7.4]
@@ -42,7 +42,6 @@ jobs:
         run: chmod -R 775 storage bootstrap/cache
       - name: Create Database
         run: |
-          mkdir -p database
           touch database/database.sqlite
           php artisan migrate:fresh --seed
       - name: Execute tests (Unit and Feature tests) via PHPUnit
