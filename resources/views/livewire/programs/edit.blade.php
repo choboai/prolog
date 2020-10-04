@@ -17,15 +17,16 @@
 
         <div>
             <h2 class="text-2xl font-mono font-bold mr-5">Prolog files</h2>
-            @forelse ($program->prolog_files as $prolog_file)
-                @livewire('programs.prolog-file', ['prologFile' => $prolog_file])
-            @empty
-                <div class="w-full p-4 text-center border border-gray-200 rounded-md">no files yet</div>
-            @endforelse
+            <div>
+                @forelse ($this->prologFiles as $prologFile)
+                    <livewire:programs.prolog-file :key="$prologFile->id" :prologFile="$prologFile" />
+                @empty
+                    <div class="w-full my-4 p-4 text-center border border-gray-200 rounded-md">no files yet</div>
+                @endforelse
+            </div>
             <div class="mt-2">
                 <button class="text-sm py-1 px-3 border border-gray-200 rounded-lg shadow-sm hover:shadow-md cursor-pointer" type="button" wire:click="createPrologFile">add a new file</button>
             </div>
         </div>
-
     </form>
 </div>

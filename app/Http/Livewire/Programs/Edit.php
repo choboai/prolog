@@ -13,6 +13,13 @@ class Edit extends Component
      */
     public $program;
 
+    /**
+     * @var bool
+     */
+    public $confirmingPrologFileDeletion = false;
+
+    protected $listeners = ['prologFileDeleted' => 'getPrologFilesProperty'];
+
     protected $rules = [
         'program.name' => 'required|string|min:6',
     ];
@@ -27,7 +34,11 @@ class Edit extends Component
     public function createPrologFile()
     {
         $this->program->prolog_files()->create();
-        $this->program->refresh();
+    }
+
+    public function getPrologFilesProperty()
+    {
+        return $this->program->prolog_files()->get();
     }
 
     public function render()

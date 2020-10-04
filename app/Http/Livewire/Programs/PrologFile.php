@@ -24,6 +24,12 @@ class PrologFile extends Component
         $this->prologFile->save();
     }
 
+    public function deletePrologFile()
+    {
+        $this->prologFile->delete();
+        $this->emitUp('prologFileDeleted');
+    }
+
     public function render()
     {
         return view('livewire.programs.prolog-file');
