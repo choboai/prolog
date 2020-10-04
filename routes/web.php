@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProgramController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,9 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [ProgramController::class, 'index'])->name('programs.index');
+Route::get('/programs/create', [ProgramController::class, 'create'])->name('programs.create');
+Route::get('/programs/{program}', [ProgramController::class, 'edit'])->name('programs.edit');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

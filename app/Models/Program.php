@@ -25,6 +25,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @method static \Illuminate\Database\Eloquent\Builder|Program whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Program whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Program whereUpdatedAt($value)
+ * @property string $name
+ * @method static \Illuminate\Database\Eloquent\Builder|Program whereName($value)
  */
 class Program extends Model
 {

@@ -15,8 +15,8 @@ class CreatePrologFilesTable extends Migration
     {
         Schema::create('prolog_files', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->text('content');
+            $table->string('name')->nullable();
+            $table->text('content')->nullable();
             $table->foreignId('program_id')->constrained();
             $table->timestamps();
         });

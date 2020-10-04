@@ -15,8 +15,8 @@ class CreatePrologQueriesTable extends Migration
     {
         Schema::create('prolog_queries', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->text('content');
+            $table->string('name')->nullable();
+            $table->text('content')->nullable();
             $table->foreignId('program_id')->constrained();
             $table->timestamps();
         });
