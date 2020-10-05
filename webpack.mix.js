@@ -17,4 +17,10 @@ mix
     require("postcss-import"),
     require("tailwindcss"),
   ])
+  .webpackConfig({
+    node: {
+      fs: "empty",
+      child_process: "empty",
+    },
+  })
   .browserSync("prolog.test");

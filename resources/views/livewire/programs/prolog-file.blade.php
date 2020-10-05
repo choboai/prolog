@@ -1,4 +1,4 @@
-<div x-data="{modalOpen:false}" class="w-full p-4 text-center border border-gray-200 rounded-md my-4">
+<div x-cloak x-data="{modalOpen:false}" class="w-full p-4 text-center border border-gray-200 rounded-md my-4">
     <div class="mb-5 flex flex-col items-start">
         <div class="flex flex-col items-start sm:items-center sm:flex-row sm:justify-between w-full">
             <div>

@@ -30,10 +30,13 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class PrologQuery extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'name',
         'content',
     ];
+
+    protected $touches = ['program'];
 
     public function program(): BelongsTo
     {

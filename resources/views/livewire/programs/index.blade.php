@@ -15,7 +15,12 @@
         @forelse ($programs as $program)
 
             <a href="{{ route('programs.edit', $program) }}" class="p-8 border border-gray-200 rounded-md shadow-sm hover:shadow-md cursor-pointer">
-                {{ $program->name }}
+                <div>
+                    {{ $program->name }}
+                </div>
+                <div class="text-xs text-gray-600">
+                    updated <x-carbon :date="$program->updated_at" human />
+                </div>
             </a>
         @empty
             <div>No programs matching your query</div>

@@ -15,17 +15,40 @@
             <x-error class="text-red-500" field="program.name" />
         </div>
 
-        <div>
-            <h2 class="text-2xl font-mono font-bold mr-5">Prolog files</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-16">
             <div>
-                @forelse ($this->prologFiles as $prologFile)
-                    <livewire:programs.prolog-file :key="$prologFile->id" :prologFile="$prologFile" />
-                @empty
-                    <div class="w-full my-4 p-4 text-center border border-gray-200 rounded-md">no files yet</div>
-                @endforelse
+                <h2 class="text-2xl font-mono font-bold mr-5">Prolog files</h2>
+                <div class="prolog-files">
+                    @forelse ($this->prologFiles as $prologFile)
+                        <livewire:programs.prolog-file :key="$prologFile->id" :prologFile="$prologFile" />
+                    @empty
+                        <div class="w-full my-4 p-4 text-center border border-gray-200 rounded-md">no files yet</div>
+                    @endforelse
+                </div>
+                <div class="mt-2">
+                    <button class="text-sm py-1 px-3 border border-gray-200 rounded-lg shadow-sm hover:shadow-md cursor-pointer" type="button" wire:click="createPrologFile">add a new file</button>
+                </div>
             </div>
-            <div class="mt-2">
-                <button class="text-sm py-1 px-3 border border-gray-200 rounded-lg shadow-sm hover:shadow-md cursor-pointer" type="button" wire:click="createPrologFile">add a new file</button>
+            <div>
+                <div>
+                    <h2 class="text-2xl font-mono font-bold mr-5">Queries</h2>
+                    <div class="prolog-queries">
+                        @forelse ($this->prologQueries as $prologQuery)
+                            <livewire:programs.prolog-query :key="$prologQuery->id" :prologQuery="$prologQuery" />
+                        @empty
+                            <div class="w-full my-4 p-4 text-center border border-gray-200 rounded-md">no queries yet</div>
+                        @endforelse
+                    </div>
+                    <div class="mt-2">
+                        <button class="text-sm py-1 px-3 border border-gray-200 rounded-lg shadow-sm hover:shadow-md cursor-pointer" type="button" wire:click="createPrologQuery">add a new query</button>
+                    </div>
+                </div>
+                <div class="mt-10">
+                    <h2 class="text-2xl font-mono font-bold mr-5">Results</h2>
+                    <div class="text-gray-100 text-lg font-mono bg-indigo-900 w-full my-4 p-4 border border-gray-200 rounded-md">
+                        Execute a query to get a result
+                    </div>
+                </div>
             </div>
         </div>
     </form>

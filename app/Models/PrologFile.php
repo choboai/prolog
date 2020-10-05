@@ -36,6 +36,8 @@ class PrologFile extends Model
         'content',
     ];
 
+    protected $touches = ['program'];
+
     public function program(): BelongsTo
     {
         return $this->belongsTo(Program::class);
