@@ -19,7 +19,7 @@ class Edit extends Component
     ];
 
     protected $rules = [
-        'program.name' => 'required|string|min:6',
+        'program.name' => 'required|string|min:4',
     ];
 
     public function save()

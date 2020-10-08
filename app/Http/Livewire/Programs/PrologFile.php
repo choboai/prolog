@@ -13,7 +13,7 @@ class PrologFile extends Component
     public $prologFile;
 
     protected $rules = [
-        'prologFile.name' => 'required|string|min:6',
+        'prologFile.name' => 'required|string|min:3',
         'prologFile.content' => 'nullable|string',
     ];
 

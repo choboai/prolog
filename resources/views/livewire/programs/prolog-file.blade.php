@@ -14,6 +14,6 @@
             </x-modal-delete>
         </div>
     </div>
-    <x-textarea class="outline-none bg-blue-50 w-full py-2 px-4 rounded-md shadow" name="content" wire:model="prologFile.content" wire:keydown.debounce.200ms="save()" rows="10"></x-textarea>
+    <x-textarea class="prolog-files outline-none bg-blue-50 w-full py-2 px-4 rounded-md shadow" name="content" wire:model="prologFile.content" wire:keydown.debounce.200ms="save()" rows="10"></x-textarea>
     <x-error class="text-red-500" field="prologFile.content" />
 </div>

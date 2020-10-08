@@ -13,7 +13,7 @@ class PrologQuery extends Component
     public $prologQuery;
 
     protected $rules = [
-        'prologQuery.name' => 'required|string|min:6',
+        'prologQuery.name' => 'required|string|min:3',
         'prologQuery.content' => 'nullable|string',
     ];
 

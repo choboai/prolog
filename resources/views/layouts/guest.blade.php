@@ -19,7 +19,7 @@
         <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.2.1/dist/alpine.js" defer></script>
     </head>
     <body class="antialiased">
-        <nav class="w-full h-16 px-3 sm:px-6 lg:px-8 border-t-4 border-blue-700 shadow-md">
+        {{-- <nav class="w-full h-16 px-3 sm:px-6 lg:px-8 border-t-4 border-blue-700 shadow-md">
             <div class="max-w-7xl mx-auto flex justify-between items-center ">
                 <div>
                     <a href="{{ route('programs.index') }}" class="text-4xl font-extrabold font-mono">
@@ -30,10 +30,12 @@
 
                 </div>
             </div>
-        </nav>
+        </nav> --}}
+        @livewire('navigation-dropdown')
         <div class="font-sans text-gray-900 px-3 sm:px-6 lg:px-8">
             {{ $slot }}
         </div>
+        @stack('modals')
         @livewireScripts
     </body>
 </html>

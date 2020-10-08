@@ -84166,45 +84166,68 @@ var pl = __webpack_require__(/*! tau-prolog */ "./node_modules/tau-prolog/module
 
 var session = pl.create();
 
-window.evaluate = function evaluate(event) {
-  console.log(event);
-  var program = document.querySelectorAll("#prolog-files textarea");
-  console.log(program);
-  var goal = document.querySelectorAll("#prolog-queries textarea");
-  console.log(goal); // Consult
-
-  session.consult(program, {
+window.evaluate = function evaluate(mouseClickEvent) {
+  // Consult
+  session.consult(getProgram(), {
     success: function success() {
       // Query
+      var goal = getGoal(mouseClickEvent);
       session.query(goal, {
         success: function success(goal) {
-          // Answers
           session.answer({
             success: function success(answer) {
-              /* Answer */
-              console.log(answer);
+              showResult(session.format_answer(answer));
             },
             error: function error(err) {
               /* Uncaught error */
+              showError(err);
             },
             fail: function fail() {
               /* Fail */
+              showError("Fail");
             },
             limit: function limit() {
               /* Limit exceeded */
+              showError("Limit exceeded");
             }
           });
         },
         error: function error(err) {
           /* Error parsing goal */
+          showError("Error parsing query! \n" + err);
         }
       });
     },
     error: function error(err) {
-      /* Error parsing program */
+      showError("Error parsing program! \n" + err);
     }
   });
 };
+
+function getProgram() {
+  var files = document.querySelectorAll("textarea.prolog-files");
+  return Array.from(files).map(function (file) {
+    return file.value;
+  }).reduce(function (program, file) {
+    return program + "\n" + file;
+  });
+}
+
+function getGoal(mouseClickEvent) {
+  return mouseClickEvent.target.closest("button").parentNode.previousSibling.previousSibling.value;
+}
+
+function showResult(text) {
+  var element = document.getElementById("results");
+  element.textContent = text;
+  element.classList.replace("bg-red-700", "bg-indigo-900");
+}
+
+function showError(text) {
+  var element = document.getElementById("results");
+  element.textContent = text;
+  element.classList.replace("bg-indigo-900", "bg-red-700");
+}
 
 /***/ }),
 

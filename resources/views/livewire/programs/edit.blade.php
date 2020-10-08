@@ -18,7 +18,7 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-16">
             <div>
                 <h2 class="text-2xl font-mono font-bold mr-5">Prolog files</h2>
-                <div class="prolog-files">
+                <div class="">
                     @forelse ($this->prologFiles as $prologFile)
                         <livewire:programs.prolog-file :key="$prologFile->id" :prologFile="$prologFile" />
                     @empty
@@ -32,7 +32,7 @@
             <div>
                 <div>
                     <h2 class="text-2xl font-mono font-bold mr-5">Queries</h2>
-                    <div class="prolog-queries">
+                    <div class="">
                         @forelse ($this->prologQueries as $prologQuery)
                             <livewire:programs.prolog-query :key="$prologQuery->id" :prologQuery="$prologQuery" />
                         @empty
@@ -45,7 +45,7 @@
                 </div>
                 <div class="mt-10">
                     <h2 class="text-2xl font-mono font-bold mr-5">Results</h2>
-                    <div class="text-gray-100 text-lg font-mono bg-indigo-900 w-full my-4 p-4 border border-gray-200 rounded-md">
+                    <div id="results" class="text-gray-100 text-lg font-mono bg-indigo-900 w-full my-4 p-4 border border-gray-200 rounded-md">
                         Execute a query to get a result
                     </div>
                 </div>

@@ -1,5 +1,5 @@
-<div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
-    <div>
+<div class="min-h-screen flex flex-col mt-8 items-center pt-4 sm:pt-0">
+    <div class="text-6xl font-mono font-extrabold">
         {{ $logo }}
     </div>
 
