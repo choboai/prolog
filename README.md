@@ -1,4 +1,7 @@
 ![Build Status](https://app.chipperci.com/projects/eb20ce27-c1e4-4296-ab5a-7c9aa4712214/status/master)
+[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/opmvpc/prolog/Psalm?label=psalm)](https://github.com/opmvpc/prolog/actions?query=workflow%3APsalm+branch%3Amaster)
+[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/opmvpc/prolog/Check%20&%20fix%20styling?label=style)](https://github.com/opmvpc/prolog/actions?query=workflow%3A%22Check+%26+fix+styling%22+branch%3Amaster)
+[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/opmvpc/prolog/Laravel?label=laravel-tests)](https://github.com/opmvpc/prolog/actions?query=workflow%3ALaravel+branch%3Amaster)
 
 # Prolog
 App gestion et exécution de programmes prolog
