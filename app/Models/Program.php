@@ -55,6 +55,10 @@ class Program extends Model
         'team_id',
     ];
 
+    protected $cast = [
+        'is_public' => 'boolean',
+    ];
+
     /**
      * @return HasMany
      *
