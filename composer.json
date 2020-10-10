@@ -70,14 +70,8 @@
       "@php artisan ide-helper:meta",
       "@php artisan ide-helper:models --write"
     ],
-    "post-install-cmd": [
-      "@php artisan ide-helper:generate",
-      "@php artisan ide-helper:meta",
-      "@php artisan ide-helper:models --write"
-    ],
     "psalm": "psalm",
     "test": "phpunit",
-    "larastan": "phpstan analyse",
     "test-coverage": "phpunit --coverage-html coverage",
     "format": "php-cs-fixer fix --allow-risky=yes"
   }
