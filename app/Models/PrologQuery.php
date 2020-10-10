@@ -34,6 +34,7 @@ class PrologQuery extends Model
     protected $fillable = [
         'name',
         'content',
+        'program_id',
     ];
 
     protected $touches = ['program'];

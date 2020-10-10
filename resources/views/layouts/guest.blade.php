@@ -19,12 +19,18 @@
         <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.2.1/dist/alpine.js" defer></script>
     </head>
     <body class="antialiased">
+
         <x-toaster :message="session('ok')" />
+
         @livewire('navigation-dropdown')
-        <div class="font-sans text-gray-900 px-3 sm:px-6 lg:px-8">
+
+        <div class="font-sans text-gray-900 px-3 sm:px-6 lg:px-8 mt-8">
+            <x-guest-alert />
             {{ $slot }}
         </div>
+
         @stack('modals')
         @livewireScripts
+
     </body>
 </html>

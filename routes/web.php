@@ -13,8 +13,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', [ProgramController::class, 'index'])->name('programs.index');
+Route::get('/', function () {
+    return redirect()->route('programs.index');
+});
+Route::get('/programs', [ProgramController::class, 'index'])->name('programs.index');
 Route::get('/programs/create', [ProgramController::class, 'create'])->name('programs.create');
 Route::get('/programs/{program}', [ProgramController::class, 'show'])->name('programs.show');
 Route::get('/programs/{program}/edit', [ProgramController::class, 'edit'])->name('programs.edit');

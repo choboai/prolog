@@ -5,6 +5,9 @@
 
         <div class="flex items-center">
             @can('delete', $program)
+                <a href="{{ route('programs.show', $program) }}" class="text-sm py-1 px-3 border border-gray-200 rounded-lg shadow-sm hover:shadow-md cursor-pointer mr-4">
+                    Stop editing
+                </a>
                 <button type="button" @click="modalOpen = ! modalOpen" class="text-sm py-1 text-red-600 px-3 border border-gray-200 rounded-lg shadow-sm hover:shadow-md cursor-pointer mr-4">
                     Delete
                 </button>
