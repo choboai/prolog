@@ -67,6 +67,17 @@ class Edit extends Component
         return $this->program->updated_at;
     }
 
+    public function deleteProgram()
+    {
+        $this->authorize('delete', $this->program);
+
+        $this->program->delete();
+
+        session()->flash('ok', 'Program successfully deleted.');
+
+        return redirect()->route('programs.index');
+    }
+
     public function render()
     {
         return view('livewire.programs.edit');

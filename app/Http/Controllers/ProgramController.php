@@ -36,6 +36,8 @@ class ProgramController extends Controller
 
     public function edit(Program $program): View
     {
+        $this->authorize('update', $program);
+
         return view(
             'programs.edit',
             [

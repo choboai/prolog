@@ -1,13 +1,16 @@
-<div>
+<div x-cloak x-data="{modalOpen:false}">
 
     <div class="flex justify-between items-center">
         <h1 class="text-3xl font-mono font-bold mr-5 border-blue-700 border-b-4">{{ $this->program->name ?? 'Nameless program' }}</h1>
 
         <div class="flex items-center">
             @can('delete', $program)
-                <a href="{{ route('programs.edit', $program) }}" class="text-sm py-1 px-3 border border-gray-200 rounded-lg shadow-sm hover:shadow-md cursor-pointer mr-4">
+                <button type="button" @click="modalOpen = ! modalOpen" class="text-sm py-1 text-red-600 px-3 border border-gray-200 rounded-lg shadow-sm hover:shadow-md cursor-pointer mr-4">
                     Delete
-                </a>
+                </button>
+                <x-modal-delete titre="Delete Program" action="deleteProgram">
+                    Are you sure?
+                </x-modal-delete>
             @endcan
 
             <div class="text-sm text-gray-700">

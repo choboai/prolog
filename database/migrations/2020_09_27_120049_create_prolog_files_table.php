@@ -17,7 +17,7 @@ class CreatePrologFilesTable extends Migration
             $table->id();
             $table->string('name')->nullable();
             $table->text('content')->nullable();
-            $table->foreignId('program_id')->constrained();
+            $table->foreignId('program_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

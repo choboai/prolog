@@ -3,10 +3,13 @@
 namespace App\Http\Livewire\Programs;
 
 use App\Models\PrologFile as PrologFileModel;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Component;
 
 class PrologFile extends Component
 {
+    use AuthorizesRequests;
+
     /**
      * @var PrologFileModel
      */
@@ -19,6 +22,8 @@ class PrologFile extends Component
 
     public function save()
     {
+        $this->authorize('update', $this->prologFile->program);
+
         $this->validate();
 
         $this->prologFile->save();
@@ -27,6 +32,8 @@ class PrologFile extends Component
 
     public function deletePrologFile()
     {
+        $this->authorize('update', $this->prologFile->program);
+
         $this->prologFile->delete();
         $this->emitUp('prologFileDeleted');
     }

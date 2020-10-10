@@ -3,10 +3,13 @@
 namespace App\Http\Livewire\Programs;
 
 use App\Models\PrologQuery as PrologQueryModel;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Component;
 
 class PrologQuery extends Component
 {
+    use AuthorizesRequests;
+
     /**
      * @var PrologQueryModel
      */
@@ -19,6 +22,8 @@ class PrologQuery extends Component
 
     public function save()
     {
+        $this->authorize('update', $this->prologFile->program);
+
         $this->validate();
 
         $this->prologQuery->save();
@@ -27,6 +32,8 @@ class PrologQuery extends Component
 
     public function deletePrologQuery()
     {
+        $this->authorize('update', $this->prologFile->program);
+
         $this->prologQuery->delete();
         $this->emitUp('prologQueryDeleted');
     }
