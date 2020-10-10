@@ -3,10 +3,13 @@
 namespace App\Http\Livewire\Programs;
 
 use App\Models\Program;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Component;
 
 class Edit extends Component
 {
+    use AuthorizesRequests;
+
     /**
      *
      * @var Program
@@ -20,6 +23,8 @@ class Edit extends Component
 
     protected $rules = [
         'program.name' => 'required|string|min:4',
+        'program.is_public' => 'nullable|boolean',
+        'program.team_id' => 'nullable|numeric',
     ];
 
     public function save()
@@ -27,6 +32,9 @@ class Edit extends Component
         $this->authorize('update', $this->program);
 
         $this->validate();
+        if ($this->program->team_id == 0) {
+            $this->program->team_id = null;
+        }
 
         $this->program->save();
     }

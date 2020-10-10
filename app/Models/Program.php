@@ -2,9 +2,11 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * App\Models\Program
@@ -61,5 +63,16 @@ class Program extends Model
     public function team()
     {
         return $this->belongsTo(Team::class);
+    }
+
+    public function scopeVisibles(Builder $query)
+    {
+        return $query->where('is_public', true)
+            ->when(Auth::check(), function (Builder $query) {
+                $query->orWhere('user_id', Auth::user()->id)
+                    ->orWhere(function (Builder $query) {
+                        $query->whereIn('team_id', Auth::user()->allTeams()->pluck('id')->toArray());
+                    });
+            });
     }
 }

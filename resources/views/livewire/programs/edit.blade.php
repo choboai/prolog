@@ -15,6 +15,32 @@
             <x-error class="text-red-500" field="program.name" />
         </div>
 
+
+        @auth
+            @if ($this->program->user_id !== null && request()->user()->id === $this->program->user_id)
+                <div class="my-5">
+                    <div class="flex items-center font-bold w-64">
+                        <x-checkbox name="public" wire:model="program.is_public" wire:change.debounce.200ms="save()"/>
+                        <x-label class="ml-5" for="public"/>
+                    </div>
+                    <x-error class="text-red-500" field="program.is_public" />
+                </div>
+
+                <div class="my-5">
+                    <div class="flex items-center font-bold w-64">
+                        <x-label class="mr-5" for="team"/>
+                        <select name="team" id="team" wire:model="program.team_id" wire:change.debounce.200ms="save()">
+                            <option value="0">No team</option>
+                            @foreach (request()->user()->allTeams() as $team)
+                                <option value="{{$team->id}}">{{$team->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <x-error class="text-red-500" field="program.team_id" />
+                </div>
+            @endif
+        @endauth
+
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-16">
             <div>
                 <h2 class="text-2xl font-mono font-bold mr-5">Prolog files</h2>

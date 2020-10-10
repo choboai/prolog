@@ -3,6 +3,8 @@
 namespace App\Http\Livewire\Programs;
 
 use App\Models\Program;
+use Illuminate\Contracts\Pagination\Paginator;
+use Illuminate\Database\Eloquent\Builder;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -25,7 +27,21 @@ class Index extends Component
     public function render()
     {
         return view('livewire.programs.index', [
-            'programs' => Program::latest()->where('name', 'like', '%'.$this->search.'%')->paginate(12),
+            'programs' => $this->getProgramsList(),
         ]);
+    }
+
+    private function getProgramsList(): Paginator
+    {
+        return Program::latest()
+            ->visibles()
+            ->where('name', 'like', '%'.$this->search.'%')
+            ->orWhereHas('user', function (Builder $query) {
+                $query->where('name', 'like', '%'.$this->search.'%');
+            })
+            ->orWhereHas('team', function (Builder $query) {
+                $query->where('name', 'like', '%'.$this->search.'%');
+            })
+            ->paginate(12);
     }
 }

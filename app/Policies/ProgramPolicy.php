@@ -29,7 +29,7 @@ class ProgramPolicy
             return false;
         }
 
-        if ($user->hasTeamPermission($user->currentTeam(), 'update')) {
+        if ($program->team_id !== null && $user->teams()->find($program->team_id) !== null) {
             return true;
         }
 

@@ -23,3 +23,4 @@ App gestion et exécution de programmes prolog
 - [ ] Coloriser le code dans l'éditeur
 - [ ] animations
 - [ ] turbolinks
+- [ ] filtres ou dashboard pour ne voir que les projets persos / teams
