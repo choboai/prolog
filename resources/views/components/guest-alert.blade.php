@@ -1,7 +1,7 @@
 @guest
 @if (request()->is('programs*'))
-    <div class="mx-3 sm:mx-6 lg:mx-8 mb-4">
-        <div class="rounded-md bg-yellow-50 p-4">
+    <div class="px-3 sm:px-6 lg:px-8 mb-4">
+        <div class="max-w-7xl mx-auto rounded-md bg-yellow-50 p-4">
             <div class="flex">
             <div class="flex-shrink-0">
                 <!-- Heroicon name: exclamation -->
@@ -16,8 +16,8 @@
                 <div class="mt-2 text-sm leading-5 text-yellow-700">
                 <p>
                     Be aware that as a guest, programs you create could be edited or deleted by anyone.
-                    <a href="{{ route('register') }}" class="ml-4 text-sm py-1 px-3 bg-yellow-100 border border-yellow-700 rounded-lg shadow-sm hover:shadow-md cursor-pointer mr-4">
-                        Create an account
+                    <a href="{{ route('register') }}" class="ml-2 text-xs px-2 bg-yellow-100 border border-yellow-700 rounded-lg shadow-sm hover:shadow-md cursor-pointer mr-4">
+                        Register
                     </a>
                 </p>
                 </div>
