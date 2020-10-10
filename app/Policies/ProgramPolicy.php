@@ -11,6 +11,7 @@ class ProgramPolicy
     use HandlesAuthorization;
 
     /**
+/**
      * Determine if the given program can be updated by the user.
      *
      * @param  \App\Models\User  $user|null
@@ -20,7 +21,7 @@ class ProgramPolicy
     public function update(?User $user, Program $program)
     {
         // anon creator
-        if ($program->user === null) {
+        if ($program->user_id === null) {
             return true;
         }
 
@@ -46,8 +47,12 @@ class ProgramPolicy
     public function delete(?User $user, Program $program)
     {
         // anon creator
-        if ($program->user === null) {
+        if ($program->user_id === null) {
             return true;
+        }
+
+        if ($user === null) {
+            return false;
         }
 
         return $user->id === $program->user_id;

@@ -32,15 +32,30 @@ class Predicate extends Model
 {
     use HasFactory;
 
+    /**
+     * @var string[]
+     *
+     * @psalm-var array{0: string}
+     */
     protected $fillable = [
         'literal',
     ];
 
+    /**
+     * @return HasOne
+     *
+     * @psalm-return HasOne<Atom>
+     */
     public function atom(): HasOne
     {
         return $this->hasOne(Atom::class);
     }
 
+    /**
+     * @return HasMany
+     *
+     * @psalm-return HasMany<Clause>
+     */
     public function atoms(): HasMany
     {
         return $this->hasMany(Clause::class, 'clauses_list_id', 'id');

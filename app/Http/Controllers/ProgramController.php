@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Program;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
@@ -23,10 +24,10 @@ class ProgramController extends Controller
         );
     }
 
-    public function create()
+    public function create(): \Illuminate\Http\RedirectResponse
     {
         if (Auth::check()) {
-            $program = Auth::user()->programs()->create();
+            $program = User::find(Auth::id())->programs()->create();
         } else {
             $program = Program::create();
         }

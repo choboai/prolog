@@ -31,14 +31,29 @@ class PrologFile extends Model
 {
     use HasFactory;
 
+    /**
+     * @var string[]
+     *
+     * @psalm-var array{0: string, 1: string, 2: string}
+     */
     protected $fillable = [
         'name',
         'content',
         'program_id',
     ];
 
+    /**
+     * @var string[]
+     *
+     * @psalm-var array{0: string}
+     */
     protected $touches = ['program'];
 
+    /**
+     * @return BelongsTo
+     *
+     * @psalm-return BelongsTo<Program>
+     */
     public function program(): BelongsTo
     {
         return $this->belongsTo(Program::class);

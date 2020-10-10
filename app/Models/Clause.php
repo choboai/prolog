@@ -29,14 +29,27 @@ class Clause extends Model
 {
     use HasFactory;
 
+    /**
+     * @var array
+     */
     protected $fillable = [
     ];
 
+    /**
+     * @return BelongsTo
+     *
+     * @psalm-return BelongsTo<Program>
+     */
     public function program(): BelongsTo
     {
         return $this->belongsTo(Program::class);
     }
 
+    /**
+     * @return HasOne
+     *
+     * @psalm-return HasOne<Predicate>
+     */
     public function predicate(): HasOne
     {
         return $this->hasOne(Predicate::class);

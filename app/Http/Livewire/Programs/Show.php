@@ -2,32 +2,56 @@
 
 namespace App\Http\Livewire\Programs;
 
+use App\Models\Program;
 use App\Models\PrologFile;
 use App\Models\PrologQuery;
+use Illuminate\Contracts\Container\BindingResolutionException;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\View\View;
+use InvalidArgumentException;
 use Livewire\Component;
+use Symfony\Component\Routing\Exception\RouteNotFoundException;
 
 class Show extends Component
 {
     /**
-     *
+     * @psalm-suppress PropertyNotSetInConstructor
      * @var Program
      */
     public $program;
 
-    public function getPrologFilesProperty()
+    /**
+     * @return Collection
+     *
+     * @psalm-return Collection<PrologFile>
+     */
+    public function getPrologFilesProperty(): Collection
     {
         return $this->program->prolog_files()->get();
     }
 
-    public function getPrologQueriesProperty()
+    /**
+     * @return Collection
+     *
+     * @psalm-return Collection<PrologQuery>
+     */
+    public function getPrologQueriesProperty(): Collection
     {
         return $this->program->prolog_queries()->get();
     }
 
+    /**
+     * @return RedirectResponse
+     * @throws InvalidArgumentException
+     * @throws BindingResolutionException
+     * @throws RouteNotFoundException
+     */
     public function duplicateProgram()
     {
         $clone = $this->program->replicate();
-        $clone->user_id = request()->user()->id ?? null;
+        $clone->user_id = intval(Auth::id()) === 0 ? null : intval(Auth::id());
         $clone->team_id = null;
         $clone->save();
 
@@ -44,7 +68,12 @@ class Show extends Component
         return redirect()->route('programs.edit', $clone);
     }
 
-    public function render()
+    /**
+     * @return View
+     *
+     * @throws BindingResolutionException
+     */
+    public function render(): View
     {
         return view('livewire.programs.show');
     }
