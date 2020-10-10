@@ -34,6 +34,8 @@ class Program extends Model
 
     protected $fillable = [
         'name',
+        'is_public',
+        'team_id',
     ];
 
     public function clauses(): HasMany
@@ -49,5 +51,15 @@ class Program extends Model
     public function prolog_queries(): HasMany
     {
         return $this->hasMany(PrologQuery::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function team()
+    {
+        return $this->belongsTo(Team::class);
     }
 }

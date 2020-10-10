@@ -16,7 +16,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [ProgramController::class, 'index'])->name('programs.index');
 Route::get('/programs/create', [ProgramController::class, 'create'])->name('programs.create');
-Route::get('/programs/{program}', [ProgramController::class, 'edit'])->name('programs.edit');
+Route::get('/programs/{program}', [ProgramController::class, 'show'])->name('programs.show');
+Route::get('/programs/{program}/edit', [ProgramController::class, 'edit'])->name('programs.edit');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

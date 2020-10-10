@@ -84172,6 +84172,7 @@ window.evaluate = function evaluate(mouseClickEvent) {
     success: function success() {
       // Query
       var goal = getGoal(mouseClickEvent);
+      console.log(goal);
       session.query(goal, {
         success: function success(goal) {
           session.answer({
@@ -84205,12 +84206,16 @@ window.evaluate = function evaluate(mouseClickEvent) {
 };
 
 function getProgram() {
-  var files = document.querySelectorAll("textarea.prolog-files");
+  var files = document.querySelectorAll(".prolog-files");
   return Array.from(files).map(function (file) {
-    return file.value;
+    return getProgramFileValue(file);
   }).reduce(function (program, file) {
     return program + "\n" + file;
   });
+}
+
+function getProgramFileValue(file) {
+  return file.value;
 }
 
 function getGoal(mouseClickEvent) {

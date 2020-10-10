@@ -9,8 +9,10 @@ App gestion et exécution de programmes prolog
 
 ### Features
 - [ ] intégration de l'auth et des équipes
+- [ ] filtres index programmes [teams, public]
 - [ ] show programme
 - [ ] gestion des droits d'acces aux modifs des programmes
+- [ ] copie d'un programme
 - [ ] anonymes peuvent créer? comment modifier?
 - [ ] programmes public/teams
 - [ ] Service d'import de données

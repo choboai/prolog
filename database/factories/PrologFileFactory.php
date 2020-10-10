@@ -22,7 +22,11 @@ class PrologFileFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => 'rules',
+            'content' => 'likes(sam, salad).
+likes(dean, pie).
+likes(sam, apples).
+likes(dean, whiskey).',
         ];
     }
 }

@@ -9,7 +9,9 @@ window.evaluate = function evaluate(mouseClickEvent) {
   session.consult(getProgram(), {
     success: function() {
       // Query
+
       const goal = getGoal(mouseClickEvent);
+      console.log(goal);
       session.query(goal, {
         success: function(goal) {
           session.answer({
@@ -43,11 +45,14 @@ window.evaluate = function evaluate(mouseClickEvent) {
 };
 
 function getProgram() {
-  const files = document.querySelectorAll("textarea.prolog-files");
-
+  const files = document.querySelectorAll(".prolog-files");
   return Array.from(files)
-    .map((file) => file.value)
+    .map((file) => getProgramFileValue(file))
     .reduce((program, file) => program + "\n" + file);
+}
+
+function getProgramFileValue(file) {
+  return file.value;
 }
 
 function getGoal(mouseClickEvent) {

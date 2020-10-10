@@ -24,6 +24,8 @@ class Edit extends Component
 
     public function save()
     {
+        $this->authorize('update', $this->program);
+
         $this->validate();
 
         $this->program->save();
@@ -32,11 +34,13 @@ class Edit extends Component
     public function createPrologFile()
     {
         $this->program->prolog_files()->create();
+        $this->getPrologFilesProperty();
     }
 
     public function createPrologQuery()
     {
         $this->program->prolog_queries()->create();
+        $this->getPrologQueriesProperty();
     }
 
     public function getPrologFilesProperty()

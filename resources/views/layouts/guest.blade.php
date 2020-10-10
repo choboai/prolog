@@ -35,7 +35,7 @@
         <div class="font-sans text-gray-900 px-3 sm:px-6 lg:px-8">
             {{ $slot }}
         </div>
-        @stack('modals')
+        {{-- @stack('modals') --}}
         @livewireScripts
     </body>
 </html>

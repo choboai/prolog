@@ -22,7 +22,8 @@ class PrologQueryFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => 'What Sam does like?',
+            'content' => 'likes(sam, X).',
         ];
     }
 }
