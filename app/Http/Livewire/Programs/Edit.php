@@ -5,8 +5,13 @@ namespace App\Http\Livewire\Programs;
 use App\Models\Program;
 use App\Models\PrologFile;
 use App\Models\PrologQuery;
+use Exception;
+use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Http\RedirectResponse;
 use Livewire\Component;
+use Symfony\Component\Routing\Exception\RouteNotFoundException;
 
 class Edit extends Component
 {
@@ -91,7 +96,14 @@ class Edit extends Component
         return $this->program->updated_at;
     }
 
-    public function deleteProgram(): \Illuminate\Http\RedirectResponse
+    /**
+     * @return RedirectResponse
+     * @throws AuthorizationException
+     * @throws Exception
+     * @throws BindingResolutionException
+     * @throws RouteNotFoundException
+     */
+    public function deleteProgram()
     {
         $this->authorize('delete', $this->program);
 
