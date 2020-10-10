@@ -56,7 +56,6 @@ class Index extends Component
     private function getProgramsList(): Paginator
     {
         return Program::latest()
-            ->visibles()
             ->where('name', 'like', '%'.$this->search.'%')
             ->orWhereHas('user', function (Builder $query) {
                 $query->where('name', 'like', '%'.$this->search.'%');
@@ -64,6 +63,7 @@ class Index extends Component
             ->orWhereHas('team', function (Builder $query) {
                 $query->where('name', 'like', '%'.$this->search.'%');
             })
+            ->visibles()
             ->paginate(12);
     }
 }

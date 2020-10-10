@@ -41,7 +41,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="outline-none bg-blue-50 w-full py-2 px-4 rounded-md shadow text-left" style="min-height: 2.5em;">{!! nl2br($prologFile->content) !!}</div>
+                            <div class="h-64 overflow-y-auto outline-none bg-blue-50 w-full py-2 px-4 rounded-md shadow text-left" style="min-height: 2.5em;">{!! nl2br($prologFile->content) !!}</div>
                             <textarea class="prolog-files hidden" name="content">{{ $prologFile->content }}</textarea>
                         </div>
                     @empty

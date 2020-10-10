@@ -56,6 +56,13 @@ class Program extends Model
     ];
 
     /**
+     * @var string[]
+     */
+    protected $casts = [
+        'is_public' => 'boolean',
+    ];
+
+    /**
      * @return HasMany
      *
      * @psalm-return HasMany<Clause>
