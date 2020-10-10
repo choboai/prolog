@@ -22,6 +22,7 @@ class PrologFile extends Component
         $this->validate();
 
         $this->prologFile->save();
+        $this->emitUp('contentSaved');
     }
 
     public function deletePrologFile()

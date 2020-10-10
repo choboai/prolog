@@ -19,6 +19,7 @@ class Edit extends Component
     protected $listeners = [
         'prologFileDeleted' => 'getPrologFilesProperty',
         'prologQueryDeleted' => 'getPrologQueriesProperty',
+        'contentSaved' => 'getUpdatedAtProperty',
     ];
 
     protected $rules = [
@@ -59,6 +60,11 @@ class Edit extends Component
     public function getPrologQueriesProperty()
     {
         return $this->program->prolog_queries()->get();
+    }
+
+    public function getUpdatedAtProperty()
+    {
+        return $this->program->updated_at;
     }
 
     public function render()

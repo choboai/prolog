@@ -1,8 +1,24 @@
 <div>
 
-    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center">
+    <div class="flex justify-between items-center">
+        <h1 class="text-3xl font-mono font-bold mr-5 border-blue-700 border-b-4">{{ $this->program->name ?? 'Nameless program' }}</h1>
+
         <div class="flex items-center">
-            <h1 class="text-3xl font-mono font-bold mr-5 border-blue-700 border-b-4">{{ $this->program->name ?? 'Nameless program' }}</h1>
+            @can('delete', $program)
+                <a href="{{ route('programs.edit', $program) }}" class="text-sm py-1 px-3 border border-gray-200 rounded-lg shadow-sm hover:shadow-md cursor-pointer mr-4">
+                    Delete
+                </a>
+            @endcan
+
+            <div class="text-sm text-gray-700">
+                updated <x-carbon :date="$this->updated_at" human />
+            </div>
+        </div>
+    </div>
+
+    <div class="mb-5">
+        <div class="flex text-sm text-gray-600 mt-4 items-center">
+            <x-user :user="$program->user" />
         </div>
     </div>
 

@@ -22,6 +22,7 @@ class PrologQuery extends Component
         $this->validate();
 
         $this->prologQuery->save();
+        $this->emitUp('contentSaved');
     }
 
     public function deletePrologQuery()
