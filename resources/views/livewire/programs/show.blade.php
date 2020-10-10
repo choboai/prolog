@@ -37,7 +37,7 @@
                             <div class="mb-2 flex flex-col items-start">
                                 <div class="flex flex-col items-start sm:items-center sm:flex-row sm:justify-between w-full">
                                     <div class="capitalize text-lg font-bold text-gray-600">
-                                        {{ $prologFile->name ?? 'nameless query' }}
+                                        {{ $prologFile->name ?? 'nameless file' }}
                                     </div>
                                 </div>
                             </div>
