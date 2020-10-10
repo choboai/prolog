@@ -123,6 +123,10 @@ class Program extends Model
         if (Auth::check()) {
             $user = User::find(Auth::id());
 
+            if ($user->email === env('ADMIN_EMAIL', 'admin@admin.com')) {
+                return $query;
+            }
+
             return $query->where('is_public', true)
             ->when(Auth::check(), function (Builder $query) use ($user) {
                 $query->orWhere('user_id', $user->id)
