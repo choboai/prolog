@@ -51,6 +51,8 @@ use Laravel\Sanctum\HasApiTokens;
  * @method static \Illuminate\Database\Eloquent\Builder|User whereTwoFactorRecoveryCodes($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereTwoFactorSecret($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Program[] $programs
+ * @property-read int|null $programs_count
  */
 class User extends Authenticatable
 {
@@ -100,7 +102,12 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
-    public function programs()
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     *
+     * @psalm-return \Illuminate\Database\Eloquent\Relations\HasMany<Program>
+     */
+    public function programs(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(Program::class);
     }

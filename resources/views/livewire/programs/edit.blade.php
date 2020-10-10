@@ -1,8 +1,30 @@
-<div>
+<div x-cloak x-data="{modalOpen:false}">
 
-    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center">
+    <div class="flex justify-between items-center">
+        <h1 class="text-3xl font-mono font-bold mr-5 border-blue-700 border-b-4">{{ $this->program->name ?? 'Nameless program' }}</h1>
+
         <div class="flex items-center">
-            <h1 class="text-3xl font-mono font-bold mr-5 border-blue-700 border-b-4">{{ $this->program->name ?? 'Nameless program' }}</h1>
+            @can('delete', $program)
+                <a href="{{ route('programs.show', $program) }}" class="text-sm py-1 px-3 border border-gray-200 rounded-lg shadow-sm hover:shadow-md cursor-pointer mr-4">
+                    Stop editing
+                </a>
+                <button type="button" @click="modalOpen = ! modalOpen" class="text-sm py-1 text-red-600 px-3 border border-gray-200 rounded-lg shadow-sm hover:shadow-md cursor-pointer mr-4">
+                    Delete
+                </button>
+                <x-modal-delete titre="Delete Program" action="deleteProgram">
+                    Are you sure?
+                </x-modal-delete>
+            @endcan
+
+            <div class="text-sm text-gray-700">
+                updated <x-carbon :date="$this->updated_at" human />
+            </div>
+        </div>
+    </div>
+
+    <div class="mb-5">
+        <div class="flex text-sm text-gray-600 mt-4 items-center">
+            <x-user :user="$program->user" />
         </div>
     </div>
 
@@ -14,6 +36,32 @@
             </div>
             <x-error class="text-red-500" field="program.name" />
         </div>
+
+
+        @auth
+            @if ($this->program->user_id !== null && request()->user()->id === $this->program->user_id)
+                <div class="my-5">
+                    <div class="flex items-center font-bold w-64">
+                        <x-checkbox name="public" wire:model="program.is_public" wire:change.debounce.200ms="save()"/>
+                        <x-label class="ml-5" for="public"/>
+                    </div>
+                    <x-error class="text-red-500" field="program.is_public" />
+                </div>
+
+                <div class="my-5">
+                    <div class="flex items-center font-bold w-64">
+                        <x-label class="mr-5" for="team"/>
+                        <select name="team" id="team" wire:model="program.team_id" wire:change.debounce.200ms="save()">
+                            <option value="0">No team</option>
+                            @foreach (request()->user()->allTeams() as $team)
+                                <option value="{{$team->id}}">{{$team->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <x-error class="text-red-500" field="program.team_id" />
+                </div>
+            @endif
+        @endauth
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-16">
             <div>
