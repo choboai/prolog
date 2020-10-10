@@ -55,7 +55,10 @@ class Program extends Model
         'team_id',
     ];
 
-    protected $cast = [
+    /**
+     * @var string[]
+     */
+    protected $casts = [
         'is_public' => 'boolean',
     ];
 
