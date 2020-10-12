@@ -23,8 +23,8 @@ class PrologFile extends Component
      * @psalm-var array{'prologFile.name': string, 'prologFile.content': string}
      */
     protected $rules = [
-        'prologFile.name' => 'required|string|min:3',
-        'prologFile.content' => 'nullable|string',
+        'prologFile.name' => 'required|string|min:3|max:170',
+        'prologFile.content' => 'nullable|string|max:65000',
     ];
 
     public function save(): void

@@ -42,9 +42,10 @@ class Edit extends Component
      * @psalm-var array{'program.name': string, 'program.is_public': string, 'program.team_id': string}
      */
     protected $rules = [
-        'program.name' => 'required|string|min:4',
+        'program.name' => 'required|string|min:4|max:170',
         'program.is_public' => 'nullable|boolean',
         'program.team_id' => 'nullable|numeric',
+        'program.description' => 'nullable|string|max:1000',
     ];
 
     public function save(): void

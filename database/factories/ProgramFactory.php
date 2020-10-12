@@ -23,6 +23,7 @@ class ProgramFactory extends Factory
     {
         return [
             'name' => $this->faker->sentence,
+            'description' => $this->faker->realText(),
         ];
     }
 }

@@ -7,6 +7,8 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
+        <x-meta />
+
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
 
@@ -18,16 +20,28 @@
         <script src="{{ asset('js/app.js') }}" defer></script>
         <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.2.1/dist/alpine.js" defer></script>
     </head>
-    <body class="antialiased">
+    <body class="antialiased min-h-screen flex flex-col">
 
-        <x-toaster :message="session('ok')" />
+        <div class="flex-none">
+            <x-toaster :message="session('ok')" />
 
-        @livewire('navigation-dropdown')
+            @livewire('navigation-dropdown')
+        </div>
 
-        <div class="font-sans text-gray-900 px-3 sm:px-6 lg:px-8 mt-8">
+        <div class="flex-grow font-sans text-gray-900 px-3 sm:px-6 lg:px-8 mt-8">
             <x-guest-alert />
             {{ $slot }}
         </div>
+
+        <footer class="w-full flex-none px-3 sm:px-6 lg:px-8 mt-6">
+            <div class="max-w-7xl mx-auto flex justify-between items-center ">
+                <div></div>
+                <div>
+                    <span class="font-mono font-bold text-sm">app code on </span>
+                    <a class="font-mono font-bold" href="https://github.com/opmvpc/prolog">GitHub</a>
+                </div>
+            </div>
+        </footer>
 
         @stack('modals')
         @livewireScripts

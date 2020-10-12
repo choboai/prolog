@@ -25,8 +25,8 @@ class PrologQuery extends Component
      * @var string[]
      */
     protected $rules = [
-        'prologQuery.name' => 'required|string|min:3',
-        'prologQuery.content' => 'nullable|string',
+        'prologQuery.name' => 'required|string|min:3|max:170',
+        'prologQuery.content' => 'nullable|string|max:65000',
     ];
 
     /**
