@@ -51,6 +51,7 @@ class Program extends Model
      */
     protected $fillable = [
         'name',
+        'description',
         'is_public',
         'team_id',
     ];

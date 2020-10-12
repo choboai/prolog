@@ -84171,8 +84171,8 @@ window.evaluate = function evaluate(mouseClickEvent) {
   session.consult(getProgram(), {
     success: function success() {
       // Query
-      var goal = getGoal(mouseClickEvent);
-      console.log(goal);
+      var goal = getGoal(mouseClickEvent); //   console.log(goal);
+
       session.query(goal, {
         success: function success(goal) {
           session.answer({
@@ -84225,13 +84225,17 @@ function getGoal(mouseClickEvent) {
 function showResult(text) {
   var element = document.getElementById("results");
   element.textContent = text;
-  element.classList.replace("results-error", "bg-indigo-900");
+  element.classList.replace("bg-indigo-700", "results-success");
+  element.classList.replace("results-error", "results-success");
+  document.getElementById("results-label").textContent = "Results ✅";
 }
 
 function showError(text) {
   var element = document.getElementById("results");
   element.textContent = text;
-  element.classList.replace("bg-indigo-900", "results-error");
+  element.classList.replace("bg-indigo-700", "results-error");
+  element.classList.replace("results-success", "results-error");
+  document.getElementById("results-label").textContent = "Results ❌";
 }
 
 /***/ }),

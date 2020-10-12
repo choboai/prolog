@@ -6,6 +6,10 @@
   display: none;
 }
 
+.results-success {
+  @apply bg-green-500;
+}
+
 .results-error {
   @apply bg-red-700;
 }

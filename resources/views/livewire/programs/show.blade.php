@@ -4,7 +4,7 @@
         <div>
             <h1 class="text-3xl font-mono font-bold mr-5">{{ $this->program->name ?? 'Nameless program' }}</h1>
 
-            <div class="flex items-center mt-1 sm:mt-0">
+            <div class="flex items-center mt-2">
                 <x-user :user="$program->user" />
             </div>
         </div>
@@ -30,6 +30,9 @@
 
     </div>
 
+    @if ($this->program->description)
+        <div class="mb-4 bg-gray-50 p-4 rounded-lg text-gray-600">{!! nl2br($this->program->description) !!}</div>
+    @endif
 
     <div class="flex flex-col">
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-16">
@@ -82,13 +85,11 @@
                         @endforelse
                     </div>
                 </div>
+
                 <hr class="sm:hidden border-gray-200 mt-10 mb-6">
-                <div class="md:mt-6">
-                    <h2 class="text-2xl font-mono font-bold mr-5">Results</h2>
-                    <div id="results" class="text-gray-100 text-lg font-mono bg-indigo-900 w-full my-4 p-4 border border-gray-200 rounded-md overflow-x-auto">
-                        Execute a query to get a result
-                    </div>
-                </div>
+
+                <x-results />
+
             </div>
         </div>
     </div>

@@ -11,7 +11,7 @@ window.evaluate = function evaluate(mouseClickEvent) {
       // Query
 
       const goal = getGoal(mouseClickEvent);
-      console.log(goal);
+      //   console.log(goal);
       session.query(goal, {
         success: function(goal) {
           session.answer({
@@ -63,11 +63,15 @@ function getGoal(mouseClickEvent) {
 function showResult(text) {
   const element = document.getElementById("results");
   element.textContent = text;
-  element.classList.replace("results-error", "bg-indigo-900");
+  element.classList.replace("bg-indigo-700", "results-success");
+  element.classList.replace("results-error", "results-success");
+  document.getElementById("results-label").textContent = "Results ✅";
 }
 
 function showError(text) {
   const element = document.getElementById("results");
   element.textContent = text;
-  element.classList.replace("bg-indigo-900", "results-error");
+  element.classList.replace("bg-indigo-700", "results-error");
+  element.classList.replace("results-success", "results-error");
+  document.getElementById("results-label").textContent = "Results ❌";
 }
