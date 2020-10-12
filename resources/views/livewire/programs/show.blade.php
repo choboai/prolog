@@ -56,9 +56,8 @@
                     @endforelse
                 </div>
             </div>
-            <hr class="sm:hidden border-gray-200 mt-10 mb-6">
             <div>
-                <div>
+                <div class="">
                     <h2 class="text-2xl font-mono font-bold mr-5">Queries</h2>
                     <div class="">
 
@@ -85,8 +84,6 @@
                         @endforelse
                     </div>
                 </div>
-
-                <hr class="sm:hidden border-gray-200 mt-10 mb-6">
 
                 <x-results />
 
