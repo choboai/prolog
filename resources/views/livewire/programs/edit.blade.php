@@ -1,31 +1,37 @@
 <div x-cloak x-data="{modalOpen:false}">
 
-    <div class="flex justify-between items-center">
-        <h1 class="text-3xl font-mono font-bold mr-5 border-blue-700 border-b-4">{{ $this->program->name ?? 'Nameless program' }}</h1>
+    <div class="flex flex-col sm:flex-row justify-between sm:items-center mb-4">
 
-        <div class="flex items-center">
-            @can('delete', $program)
+        <div>
+            <h1 class="text-3xl font-mono font-bold mr-5">{{ $this->program->name ?? 'Nameless program' }}</h1>
+
+            <div class="flex items-center mt-1 sm:mt-0">
+                <x-user :user="$program->user" />
+            </div>
+        </div>
+
+        <div class="flex sm:flex-col items-end h-full mt-3 sm:mt-0">
+
+            <div class="flex flex-none">
                 <a href="{{ route('programs.show', $program) }}" class="text-sm py-1 px-3 border border-gray-200 rounded-lg shadow-sm hover:shadow-md cursor-pointer mr-4">
                     Stop editing
                 </a>
-                <button type="button" @click="modalOpen = ! modalOpen" class="text-sm py-1 text-red-600 px-3 border border-gray-200 rounded-lg shadow-sm hover:shadow-md cursor-pointer mr-4">
-                    Delete
-                </button>
-                <x-modal-delete titre="Delete Program" action="deleteProgram">
-                    Are you sure?
-                </x-modal-delete>
-            @endcan
 
-            <div class="text-sm text-gray-700">
-                updated <x-carbon :date="$this->updated_at" human />
+                @can('delete', $program)
+                    <button type="button" @click="modalOpen = ! modalOpen" class="text-sm py-1 text-red-600 px-3 border border-gray-200 rounded-lg shadow-sm hover:shadow-md cursor-pointer mr-4">
+                        Delete
+                    </button>
+                    <x-modal-delete titre="Delete Program" action="deleteProgram">
+                        Are you sure?
+                    </x-modal-delete>
+                @endcan
+            </div>
+
+            <div class="text-sm text-gray-700 mt-2 flex-grow text-right">
+                updated <x-carbon :date="$program->updated_at" human />
             </div>
         </div>
-    </div>
 
-    <div class="mb-5">
-        <div class="flex text-sm text-gray-600 mt-4 items-center">
-            <x-user :user="$program->user" />
-        </div>
     </div>
 
     <form class="flex flex-col">
@@ -77,6 +83,7 @@
                     <button class="text-sm py-1 px-3 border border-gray-200 rounded-lg shadow-sm hover:shadow-md cursor-pointer" type="button" wire:click="createPrologFile">add a new file</button>
                 </div>
             </div>
+            <hr class="sm:hidden border-gray-200 mt-10 mb-6">
             <div>
                 <div>
                     <h2 class="text-2xl font-mono font-bold mr-5">Queries</h2>
@@ -91,7 +98,8 @@
                         <button class="text-sm py-1 px-3 border border-gray-200 rounded-lg shadow-sm hover:shadow-md cursor-pointer" type="button" wire:click="createPrologQuery">add a new query</button>
                     </div>
                 </div>
-                <div class="mt-10">
+                <hr class="sm:hidden border-gray-200 mt-10 mb-6">
+                <div class="md:mt-6">
                     <h2 class="text-2xl font-mono font-bold mr-5">Results</h2>
                     <div id="results" class="text-gray-100 text-lg font-mono bg-indigo-900 w-full my-4 p-4 border border-gray-200 rounded-md overflow-x-auto">
                         Execute a query to get a result

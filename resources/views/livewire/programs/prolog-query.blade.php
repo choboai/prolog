@@ -1,14 +1,14 @@
 <div x-cloak x-data="{modalOpen:false}" class="w-full p-4 text-center border border-gray-200 rounded-md my-4">
     <div class="mb-5 flex flex-col items-start">
-        <div class="flex flex-col items-start sm:items-center sm:flex-row sm:justify-between w-full">
+        <div class="flex flex-shrink flex-col items-start lg:items-center lg:flex-row lg:justify-between w-full">
             <div>
                 <div class="flex items-center font-bold">
-                    <label class="mr-5" for="{{'name-query-'. $prologQuery->id}}">Query Name</label>
-                    <x-input :id="'name-query-'. $prologQuery->id" class="flex-grow outline-none bg-blue-50 py-2 px-4 rounded-md shadow" type="text" name="name" wire:model="prologQuery.name" wire:keydown.debounce.200ms="save()"/>
+                    <label class="mr-5" for="{{'name-query-'. $prologQuery->id}}">Name</label>
+                    <x-input :id="'name-query-'. $prologQuery->id" class="flex-grow outline-none bg-blue-50 py-2 px-4 rounded-md shadow w-full" type="text" name="name" wire:model="prologQuery.name" wire:keydown.debounce.200ms="save()"/>
                 </div>
                 <x-error class="text-red-500 text-left" field="prologQuery.name" />
             </div>
-            <button type="button" @click="modalOpen = ! modalOpen" class="mt-2 sm:mt-0 float-right text-red-600">Delete</button>
+            <button type="button" @click="modalOpen = ! modalOpen" class="mt-3 lg:mt-0 text-sm py-1 px-3 border border-gray-200 rounded-lg shadow-sm hover:shadow-md cursor-pointer text-red-600">Delete</button>
             <x-modal-delete titre="Delete Query" action="deletePrologQuery">
                 Are you sure?
             </x-modal-delete>

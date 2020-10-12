@@ -1,31 +1,35 @@
 <div>
 
-    <div class="flex justify-between items-center">
-        <h1 class="text-3xl font-mono font-bold mr-5 border-blue-700 border-b-4">{{ $this->program->name ?? 'Nameless program' }}</h1>
+    <div class="flex flex-col sm:flex-row justify-between sm:items-center mb-4">
+        <div>
+            <h1 class="text-3xl font-mono font-bold mr-5">{{ $this->program->name ?? 'Nameless program' }}</h1>
 
-        <div class="flex items-center">
+            <div class="flex items-center mt-1 sm:mt-0">
+                <x-user :user="$program->user" />
+            </div>
+        </div>
 
-            <button type="button" wire:click="duplicateProgram" class="text-sm py-1 px-3 border border-gray-200 rounded-lg shadow-sm hover:shadow-md cursor-pointer mr-4">
-                Clone
-            </button>
+        <div class="flex sm:flex-col items-end justify-between h-full mt-3 sm:mt-0">
 
-            @can('update', $program)
-                <a href="{{ route('programs.edit', $program) }}" class="text-sm py-1 px-3 border border-gray-200 rounded-lg shadow-sm hover:shadow-md cursor-pointer mr-4">
-                    Edit
-                </a>
-            @endcan
+            <div class="flex">
+                <button type="button" wire:click="duplicateProgram" class="text-sm py-1 px-3 border border-gray-200 rounded-lg shadow-sm hover:shadow-md cursor-pointer mr-4">
+                    Clone
+                </button>
 
-            <div class="text-sm text-gray-700">
+                @can('update', $program)
+                    <a href="{{ route('programs.edit', $program) }}" class="text-sm py-1 px-3 border border-gray-200 rounded-lg shadow-sm hover:shadow-md cursor-pointer">
+                        Edit
+                    </a>
+                @endcan
+            </div>
+
+            <div class="text-sm text-gray-700 mt-2">
                 updated <x-carbon :date="$program->updated_at" human />
             </div>
         </div>
+
     </div>
 
-    <div class="mb-5">
-        <div class="flex text-sm text-gray-600 mt-4 items-center">
-            <x-user :user="$program->user" />
-        </div>
-    </div>
 
     <div class="flex flex-col">
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-16">
@@ -49,6 +53,7 @@
                     @endforelse
                 </div>
             </div>
+            <hr class="sm:hidden border-gray-200 mt-10 mb-6">
             <div>
                 <div>
                     <h2 class="text-2xl font-mono font-bold mr-5">Queries</h2>
@@ -77,7 +82,8 @@
                         @endforelse
                     </div>
                 </div>
-                <div class="mt-10">
+                <hr class="sm:hidden border-gray-200 mt-10 mb-6">
+                <div class="md:mt-6">
                     <h2 class="text-2xl font-mono font-bold mr-5">Results</h2>
                     <div id="results" class="text-gray-100 text-lg font-mono bg-indigo-900 w-full my-4 p-4 border border-gray-200 rounded-md overflow-x-auto">
                         Execute a query to get a result

@@ -15,7 +15,7 @@
                 </h3>
                 <div class="mt-2 text-sm leading-5 text-yellow-700">
                 <p>
-                    Be aware that as a guest, programs you create could be edited or deleted by anyone.
+                    Be aware that as guest, programs you create could be edited or deleted by anyone.
                     <a href="{{ route('register') }}" class="ml-2 text-xs px-2 bg-yellow-100 border border-yellow-700 rounded-lg shadow-sm hover:shadow-md cursor-pointer mr-4">
                         Register
                     </a>
