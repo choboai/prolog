@@ -5,3 +5,7 @@
 [x-cloak] {
   display: none;
 }
+
+.results-error {
+  @apply bg-red-700;
+}

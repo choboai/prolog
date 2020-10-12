@@ -24,7 +24,7 @@ window.evaluate = function evaluate(mouseClickEvent) {
             },
             fail: function() {
               /* Fail */
-              showError("Fail");
+              showError("false.");
             },
             limit: function() {
               /* Limit exceeded */
@@ -63,11 +63,11 @@ function getGoal(mouseClickEvent) {
 function showResult(text) {
   const element = document.getElementById("results");
   element.textContent = text;
-  element.classList.replace("bg-red-700", "bg-indigo-900");
+  element.classList.replace("results-error", "bg-indigo-900");
 }
 
 function showError(text) {
   const element = document.getElementById("results");
   element.textContent = text;
-  element.classList.replace("bg-indigo-900", "bg-red-700");
+  element.classList.replace("bg-indigo-900", "results-error");
 }
