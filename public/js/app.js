@@ -84203,6 +84203,8 @@ window.evaluate = function evaluate(mouseClickEvent) {
       showError("Error parsing program! \n" + err);
     }
   });
+  scrollTo("");
+  scrollTo("results");
 };
 
 function getProgram() {
@@ -84236,6 +84238,14 @@ function showError(text) {
   element.classList.replace("bg-indigo-700", "results-error");
   element.classList.replace("results-success", "results-error");
   document.getElementById("results-label").textContent = "Results ❌";
+}
+
+function scrollTo(hash) {
+  if (hash === "") {
+    location.hash = "";
+  }
+
+  location.hash = "#" + hash;
 }
 
 /***/ }),

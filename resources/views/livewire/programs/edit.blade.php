@@ -38,14 +38,14 @@
         <div class="mb-4 bg-gray-50 p-4 rounded-lg text-gray-600">
             <div class="mb-5">
                 <div class="flex items-center font-bold">
-                    <x-label class="flex-none w-28 mr-5 text-right" for="name" />
-                    <x-input class="flex-none outline-none bg-blue-50 sm:w-64 py-2 px-4 rounded-md shadow" type="text" name="name" wire:model="program.name" wire:keydown.debounce.200ms="save()"/>
-                    <div class="flex-grow"></div>
+                    <x-label class="sm:flex-none w-20 mr-5 text-right" for="name" />
+                    <x-input class="sm:flex-none outline-none bg-blue-50 sm:w-64 py-2 px-4 rounded-md shadow" type="text" name="name" wire:model="program.name" wire:keydown.debounce.200ms="save()"/>
+                    <div class="sm:flex-grow"></div>
                 </div>
                 <x-error class="text-red-500" field="program.name" />
             </div>
             <div class="flex mb-3">
-                <x-label class="flex-none w-28 mr-5 text-right font-bold text-gray-600" for="description" />
+                <x-label class="flex-none w-20 mr-5 text-right font-bold text-gray-600" for="description" />
                 <div class="w-full">
                     <x-textarea class="w-full outline-none bg-blue-50 py-2 px-4 rounded-md shadow" name="description" wire:model="program.description" wire:keydown.debounce.200ms="save()" rows="3"></x-textarea>
                     <x-error class="text-red-500" field="prologFile.description" />
@@ -56,7 +56,7 @@
 
                 <div class="mb-5">
                     <div class="flex items-center font-bold">
-                        <div class="flex-none w-28 mr-5 text-right capitalize"></div>
+                        <div class="flex-none w-20 mr-5 text-right capitalize"></div>
                         <x-checkbox name="public" wire:model="program.is_public" wire:change.debounce.200ms="save()"/>
                         <x-label class="ml-3" for="public"/>
                         <div class="flex-grow"></div>
@@ -65,7 +65,7 @@
                 </div>
 
                 <div class="flex mb-3">
-                    <x-label class="flex-none w-28 mr-5 text-right font-bold text-gray-600" for="team" />
+                    <x-label class="flex-none w-20 mr-5 text-right font-bold text-gray-600" for="team" />
                     <div class="w-full">
                         <select name="team" id="team" wire:model="program.team_id" wire:change.debounce.200ms="save()">
                             <option value="0">No team</option>
@@ -95,9 +95,8 @@
                     <button class="text-sm py-1 px-3 border border-gray-200 rounded-lg shadow-sm hover:shadow-md cursor-pointer" type="button" wire:click="createPrologFile">add a new file</button>
                 </div>
             </div>
-            <hr class="sm:hidden border-gray-200 mt-10 mb-6">
             <div>
-                <div>
+                <div class="mt-4 sm:mt-0">
                     <h2 class="text-2xl font-mono font-bold mr-5">Queries</h2>
                     <div class="">
                         @forelse ($this->prologQueries as $prologQuery)
@@ -110,8 +109,6 @@
                         <button class="text-sm py-1 px-3 border border-gray-200 rounded-lg shadow-sm hover:shadow-md cursor-pointer" type="button" wire:click="createPrologQuery">add a new query</button>
                     </div>
                 </div>
-
-                <hr class="sm:hidden border-gray-200 mt-10 mb-6">
 
                 <x-results />
 
