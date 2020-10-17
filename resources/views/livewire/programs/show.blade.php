@@ -47,7 +47,7 @@
                         <div class="w-full p-4 text-center border border-gray-200 rounded-md my-4">
                             <div class="mb-2 flex flex-col items-start">
                                 <div class="flex flex-col items-start sm:items-center sm:flex-row sm:justify-between w-full">
-                                    <div class="capitalize text-lg font-bold text-gray-600">
+                                    <div class="text-lg font-bold text-gray-600">
                                         {{ $prologFile->name ?? 'nameless file' }}
                                     </div>
                                 </div>
@@ -69,16 +69,12 @@
                             <div class="w-full p-4 text-center border border-gray-200 rounded-md my-4">
                                 <div class="mb-2 flex flex-col items-start">
                                     <div class="flex flex-col items-start sm:items-center sm:flex-row sm:justify-between w-full">
-                                        <div class="capitalize text-lg font-bold text-gray-600">
+                                        <div class="text-lg font-bold text-gray-600">
                                             {{ $prologQuery->name ?? 'nameless query' }}
                                         </div>
                                     </div>
                                 </div>
-                                <div>
-                                    <pre class="font-mono overflow-y-auto outline-none bg-blue-50 w-full py-2 px-4 rounded-md shadow text-left" style="max-height: 30em;">
-                                        <code class="language-prolog">{!! nl2br($prologQuery->content ?? '% No code yet') !!}</code>
-                                    </pre>
-                                </div>
+                                <pre class="font-mono overflow-y-auto outline-none bg-blue-50 w-full py-2 px-4 rounded-md shadow text-left" style="max-height: 30em;"><code  class="language-prolog">{!! nl2br($prologQuery->content ?? '% No code yet') !!}</code></pre>
                                 <textarea class="prolog-queries hidden" name="content">{{ $prologQuery->content }}</textarea>
                                 <div class="h-8 mt-3">
                                     <button x-data @click="evaluate($event)" class="inline-flex items-center text-sm py-1 px-3 border border-gray-200 rounded-lg shadow-sm hover:shadow-md cursor-pointer float-right" type="button">

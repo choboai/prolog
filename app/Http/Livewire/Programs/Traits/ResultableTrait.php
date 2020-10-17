@@ -12,7 +12,7 @@ trait ResultableTrait
     /**
      * @var string
      */
-    public $resultsClass = 'bg-indigo-700';
+    public $resultsClass = 'results-start';
 
     /**
      * @var string

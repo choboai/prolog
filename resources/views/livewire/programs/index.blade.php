@@ -15,7 +15,7 @@
         @forelse ($programs as $program)
 
             <a href="{{ route('programs.show', $program) }}" class="flex flex-col p-8 border border-gray-200 rounded-md shadow-sm hover:shadow-md cursor-pointer">
-                <div class="flex-grow text-lg font-bold capitalize font-mono">
+                <div class="flex-grow text-lg font-bold font-mono">
                     {{ $program->name  ?? 'Nameless program' }}
                 </div>
                 <div class="text-xs text-gray-600 mt-1">

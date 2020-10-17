@@ -55,7 +55,7 @@
 
                 <div class="mb-5">
                     <div class="flex items-center font-bold">
-                        <div class="flex-none w-20 mr-5 text-right capitalize"></div>
+                        <div class="flex-none w-20 mr-5 text-right"></div>
                         <x-checkbox name="public" wire:model="program.is_public" wire:change.debounce.200ms="save()"/>
                         <x-label class="ml-3" for="public"/>
                         <div class="flex-grow"></div>
