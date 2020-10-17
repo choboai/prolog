@@ -24,3 +24,7 @@ Route::get('/programs/{program}/edit', [ProgramController::class, 'edit'])->name
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+Route::fallback(function () {
+    return redirect()->route('programs.index');
+});

@@ -12,15 +12,15 @@
         <div class="flex sm:flex-col items-end justify-between h-full mt-3 sm:mt-0">
 
             <div class="flex">
-                <button type="button" wire:click="duplicateProgram" class="text-sm py-1 px-3 border border-gray-200 rounded-lg shadow-sm hover:shadow-md cursor-pointer mr-4">
-                    Clone
-                </button>
-
                 @can('update', $program)
-                    <a href="{{ route('programs.edit', $program) }}" class="text-sm py-1 px-3 border border-gray-200 rounded-lg shadow-sm hover:shadow-md cursor-pointer">
+                    <a href="{{ route('programs.edit', $program) }}" class="text-sm py-1 px-3 border border-gray-200 rounded-lg shadow-sm hover:shadow-md cursor-pointer mr-4">
                         Edit
                     </a>
                 @endcan
+
+                <button type="button" wire:click="duplicateProgram" class="text-sm py-1 px-3 border border-gray-200 rounded-lg shadow-sm hover:shadow-md cursor-pointer">
+                    Clone
+                </button>
             </div>
 
             <div class="text-sm text-gray-700 mt-2">
