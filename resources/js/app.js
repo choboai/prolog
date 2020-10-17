@@ -4,6 +4,10 @@ import Prism from "prismjs";
 
 Prism.highlightAll();
 
+Livewire.hook("element.updated", () => {
+  Prism.highlightAll();
+});
+
 const pl = require("tau-prolog");
 
 const session = pl.create();
@@ -67,19 +71,11 @@ function getGoal(mouseClickEvent) {
 }
 
 function showResult(text) {
-  const element = document.getElementById("results");
-  element.textContent = text;
-  element.classList.replace("bg-indigo-700", "results-success");
-  element.classList.replace("results-error", "results-success");
-  document.getElementById("results-label").textContent = "Results ✅";
+  Livewire.emit("result", "success", text);
 }
 
 function showError(text) {
-  const element = document.getElementById("results");
-  element.textContent = text;
-  element.classList.replace("bg-indigo-700", "results-error");
-  element.classList.replace("results-success", "results-error");
-  document.getElementById("results-label").textContent = "Results ❌";
+  Livewire.emit("result", "error", text);
 }
 
 function scrollTo(hash) {

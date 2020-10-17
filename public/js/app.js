@@ -86356,6 +86356,9 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 prismjs_components_prism_core__WEBPACK_IMPORTED_MODULE_0___default.a.highlightAll();
+Livewire.hook("element.updated", function () {
+  prismjs_components_prism_core__WEBPACK_IMPORTED_MODULE_0___default.a.highlightAll();
+});
 
 var pl = __webpack_require__(/*! tau-prolog */ "./node_modules/tau-prolog/modules/core.js");
 
@@ -86420,19 +86423,11 @@ function getGoal(mouseClickEvent) {
 }
 
 function showResult(text) {
-  var element = document.getElementById("results");
-  element.textContent = text;
-  element.classList.replace("bg-indigo-700", "results-success");
-  element.classList.replace("results-error", "results-success");
-  document.getElementById("results-label").textContent = "Results ✅";
+  Livewire.emit("result", "success", text);
 }
 
 function showError(text) {
-  var element = document.getElementById("results");
-  element.textContent = text;
-  element.classList.replace("bg-indigo-700", "results-error");
-  element.classList.replace("results-success", "results-error");
-  document.getElementById("results-label").textContent = "Results ❌";
+  Livewire.emit("result", "error", text);
 }
 
 function scrollTo(hash) {

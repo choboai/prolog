@@ -109,7 +109,7 @@
                     </div>
                 </div>
 
-                <x-results />
+                <x-results :resultsLabel="$this->resultsLabel" :resultsClass="$this->resultsClass" :resultsText="$this->resultsText" />
 
             </div>
         </div>

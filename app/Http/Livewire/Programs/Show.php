@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Programs;
 
+use App\Http\Livewire\Programs\Traits\ResultableTrait;
 use App\Models\Program;
 use App\Models\PrologFile;
 use App\Models\PrologQuery;
@@ -16,11 +17,18 @@ use Symfony\Component\Routing\Exception\RouteNotFoundException;
 
 class Show extends Component
 {
+    use ResultableTrait;
+
     /**
      * @psalm-suppress PropertyNotSetInConstructor
      * @var Program
      */
     public $program;
+
+    /**
+     * @var string[]
+     */
+    protected $listeners = ['result' => 'saveResults'];
 
     /**
      * @return Collection

@@ -1,4 +1,4 @@
-<div>
+<div wire:poll.1000ms>
 
     <div class="flex flex-col sm:flex-row justify-between sm:items-center mb-4">
         <div>
@@ -40,9 +40,9 @@
 
     <div class="flex flex-col line-numbers">
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-16">
-            <div>
+            <div >
                 <h2 class="text-2xl font-mono font-bold mr-5">Prolog files</h2>
-                <div class="">
+                <div>
                     @forelse ($this->prologFiles as $prologFile)
                         <div class="w-full p-4 text-center border border-gray-200 rounded-md my-4">
                             <div class="mb-2 flex flex-col items-start">
@@ -60,7 +60,7 @@
                     @endforelse
                 </div>
             </div>
-            <div>
+            <div >
                 <div class="">
                     <h2 class="text-2xl font-mono font-bold mr-5">Queries</h2>
                     <div class="">
@@ -89,7 +89,7 @@
                     </div>
                 </div>
 
-                <x-results />
+                <x-results :resultsLabel="$this->resultsLabel" :resultsClass="$this->resultsClass" :resultsText="$this->resultsText" />
 
             </div>
         </div>

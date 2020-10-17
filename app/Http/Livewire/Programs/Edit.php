@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Programs;
 
+use App\Http\Livewire\Programs\Traits\ResultableTrait;
 use App\Models\Program;
 use App\Models\PrologFile;
 use App\Models\PrologQuery;
@@ -15,7 +16,7 @@ use Symfony\Component\Routing\Exception\RouteNotFoundException;
 
 class Edit extends Component
 {
-    use AuthorizesRequests;
+    use AuthorizesRequests, ResultableTrait;
 
     /**
      * @psalm-suppress PropertyNotSetInConstructor
@@ -33,6 +34,7 @@ class Edit extends Component
         'prologFileDeleted' => 'getPrologFilesProperty',
         'prologQueryDeleted' => 'getPrologQueriesProperty',
         'contentSaved' => 'getUpdatedAtProperty',
+        'result' => 'saveResults',
     ];
 
     /**
