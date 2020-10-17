@@ -74,11 +74,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div>
-                                    <pre class="font-mono overflow-y-auto outline-none bg-blue-50 w-full py-2 px-4 rounded-md shadow text-left" style="max-height: 30em;">
-                                        <code class="language-prolog">{!! nl2br($prologQuery->content ?? '% No code yet') !!}</code>
-                                    </pre>
-                                </div>
+                                <pre class="font-mono overflow-y-auto outline-none bg-blue-50 w-full py-2 px-4 rounded-md shadow text-left" style="max-height: 30em;"><code  class="language-prolog">{!! nl2br($prologQuery->content ?? '% No code yet') !!}</code></pre>
                                 <textarea class="prolog-queries hidden" name="content">{{ $prologQuery->content }}</textarea>
                                 <div class="h-8 mt-3">
                                     <button x-data @click="evaluate($event)" class="inline-flex items-center text-sm py-1 px-3 border border-gray-200 rounded-lg shadow-sm hover:shadow-md cursor-pointer float-right" type="button">
