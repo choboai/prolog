@@ -15,7 +15,7 @@
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         @livewireStyles
-        @bukStyles
+        {{-- @bukStyles --}}
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
@@ -46,7 +46,8 @@
 
         @stack('modals')
         @livewireScripts
-        @bukScripts
+        <script src="https://cdn.jsdelivr.net/gh/livewire/turbolinks@v0.1.x/dist/livewire-turbolinks.js" data-turbolinks-eval="false"></script>
+        {{-- @bukScripts --}}
 
     </body>
 </html>
