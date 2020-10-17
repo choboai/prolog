@@ -8,12 +8,16 @@ Livewire.hook("element.updated", () => {
   Prism.highlightAll();
 });
 
-var Turbolinks = require("turbolinks");
-Turbolinks.start();
+// var turbolinks = require("turbolinks");
+// // Turbolinks.start();
 
-document.addEventListener("turbolinks:load", function() {
-  Prism.highlightAll();
-});
+// document.addEventListener("livewire:load", function(event) {
+//   turbolinks.start();
+// });
+
+// document.addEventListener("turbolinks:load", function() {
+//   Prism.highlightAll();
+// });
 
 const pl = require("tau-prolog");
 
