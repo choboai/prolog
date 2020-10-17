@@ -23,8 +23,11 @@
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
+        "@tailwindcss/typography": "^0.2.0",
+        "babel-plugin-prismjs": "^2.0.1",
         "child_process": "^1.0.2",
         "fs": "0.0.1-security",
+        "prismjs": "^1.22.0",
         "tau-prolog": "^0.3.0"
     }
 }

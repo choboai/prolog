@@ -1,5 +1,9 @@
 require("./bootstrap");
 
+import Prism from "prismjs";
+
+Prism.highlightAll();
+
 const pl = require("tau-prolog");
 
 const session = pl.create();

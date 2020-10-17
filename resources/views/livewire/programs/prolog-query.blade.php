@@ -14,7 +14,7 @@
             </x-modal-delete>
         </div>
     </div>
-    <x-textarea class="prolog-queries outline-none bg-blue-50 w-full py-2 px-4 rounded-md shadow" name="content" wire:model="prologQuery.content" wire:keydown.debounce.200ms="save()" rows="3"></x-textarea>
+    <x-textarea class="font-mono prolog-queries outline-none bg-blue-50 w-full py-2 px-4 rounded-md shadow" name="content" wire:model="prologQuery.content" wire:keydown.debounce.200ms="save()" rows="3"></x-textarea>
     <x-error class="text-red-500" field="prologQuery.content" />
     <div class="h-8 mt-3">
         <button x-data @click="evaluate($event)" class="inline-flex items-center text-sm py-1 px-3 border border-gray-200 rounded-lg shadow-sm hover:shadow-md cursor-pointer float-right" type="button">

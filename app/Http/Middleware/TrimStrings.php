@@ -12,6 +12,9 @@ class TrimStrings extends Middleware
      * @var array
      */
     protected $except = [
+        'prologFile.content',
+        'prologQuery.content',
+        'description',
         'password',
         'password_confirmation',
     ];
