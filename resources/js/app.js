@@ -1,10 +1,17 @@
-require("./bootstrap");
+// require("./bootstrap");
 
 import Prism from "prismjs";
 
 Prism.highlightAll();
 
 Livewire.hook("element.updated", () => {
+  Prism.highlightAll();
+});
+
+var Turbolinks = require("turbolinks");
+Turbolinks.start();
+
+document.addEventListener("turbolinks:load", function() {
   Prism.highlightAll();
 });
 
