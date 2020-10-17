@@ -31,10 +31,14 @@
     </div>
 
     @if ($this->program->description)
-        <div class="mb-4 bg-gray-50 p-4 rounded-lg text-gray-600">{!! nl2br($this->program->description) !!}</div>
+        <div class="mb-4 bg-gray-50 p-4 rounded-lg text-gray-600">
+            <x-markdown flavor="github" class="prose">
+                {!! $this->program->description !!}
+            </x-markdown>
+        </div>
     @endif
 
-    <div class="flex flex-col">
+    <div class="flex flex-col line-numbers">
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-16">
             <div>
                 <h2 class="text-2xl font-mono font-bold mr-5">Prolog files</h2>
@@ -48,7 +52,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="h-64 overflow-y-auto outline-none bg-blue-50 w-full py-2 px-4 rounded-md shadow text-left" style="min-height: 2.5em;">{!! nl2br($prologFile->content) !!}</div>
+                            <pre class="font-mono h-64 overflow-y-auto outline-none bg-blue-50 w-full py-2 px-4 rounded-md shadow text-left" style="min-height: 2.5em;"><code  class="language-prolog">{!! nl2br($prologFile->content) !!}</code></pre>
                             <textarea class="prolog-files hidden" name="content">{{ $prologFile->content }}</textarea>
                         </div>
                     @empty
@@ -70,7 +74,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="outline-none bg-blue-50 w-full py-2 px-4 rounded-md shadow text-left" style="min-height: 2.5em;">{!! nl2br($prologQuery->content) !!}</div>
+                                <pre class="font-mono outline-none bg-blue-50 w-full py-2 px-4 rounded-md shadow text-left"><code class="language-prolog">{!! nl2br($prologQuery->content) !!}</code></pre>
                                 <textarea class="prolog-queries hidden" name="content">{{ $prologQuery->content }}</textarea>
                                 <div class="h-8 mt-3">
                                     <button x-data @click="evaluate($event)" class="inline-flex items-center text-sm py-1 px-3 border border-gray-200 rounded-lg shadow-sm hover:shadow-md cursor-pointer float-right" type="button">

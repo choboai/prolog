@@ -15,6 +15,7 @@
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         @livewireStyles
+        @bukStyles
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
@@ -45,6 +46,7 @@
 
         @stack('modals')
         @livewireScripts
+        @bukScripts
 
     </body>
 </html>

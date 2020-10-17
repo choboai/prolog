@@ -47,8 +47,7 @@
             <div class="flex mb-3">
                 <x-label class="flex-none w-20 mr-5 text-right font-bold text-gray-600" for="description" />
                 <div class="w-full">
-                    <x-textarea class="w-full outline-none bg-blue-50 py-2 px-4 rounded-md shadow" name="description" wire:model="program.description" wire:keydown.debounce.200ms="save()" rows="3"></x-textarea>
-                    <x-error class="text-red-500" field="prologFile.description" />
+                    <x-textarea class="w-full outline-none bg-blue-50 py-2 px-4 rounded-md shadow" name="description" wire:model="program.description" wire:keydown.debounce.200ms="save()" rows="4"></x-textarea>
                 </div>
             </div>
             @auth
