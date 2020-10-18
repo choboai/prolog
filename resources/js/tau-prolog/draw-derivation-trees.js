@@ -125,7 +125,7 @@ var pl = window.pl;
         var child = null;
         while (state != null) {
           state.text_goal =
-            state.goal === null ? "□" : state.goal.toString(options);
+            state.goal === null ? "â–¡" : state.goal.toString(options);
           state.text_substitution = clear_substitution(
             state.substitution
           ).toString(options);
@@ -142,7 +142,6 @@ var pl = window.pl;
       // Get nodes by level
       var levels = get_states_by_level(parent);
       draw(levels, canvas, styles);
-
       saveCanvasCode();
     };
     thread.format_success = id;

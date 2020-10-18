@@ -2374,7 +2374,7 @@ window.copyButton = function copyButton() {
   !*** ./resources/js/tau-prolog/execute-prolog.js ***!
   \***************************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
 var session = window.pl.create();
 
@@ -2388,9 +2388,9 @@ window.evaluate = function evaluate(mouseClickEvent) {
 
       session.query(goal, {
         success: function success(goal) {
+          session.draw(150, "derivation", getStyle(), getWriteOptions());
           session.answer({
             success: function success(answer) {
-              session.draw(100, "derivation");
               showResult(session.format_answer(answer));
             },
             error: function error(err) {
@@ -2408,13 +2408,16 @@ window.evaluate = function evaluate(mouseClickEvent) {
           });
         },
         error: function error(err) {
+          window.tree = "";
           /* Error parsing goal */
+
           showError("Error parsing query! \n" + err);
         }
       });
     },
     error: function error(err) {
-      //   console.log(session.format_answer(err));
+      window.tree = ""; //   console.log(session.format_answer(err));
+
       showError("Error parsing program! \n" + err);
     }
   });
@@ -2443,7 +2446,6 @@ function showResult(text) {
 
 function showError(text) {
   Livewire.emit("result", "error", text);
-  window.tree = "";
 }
 
 function scrollTo(hash) {
@@ -2453,6 +2455,30 @@ function scrollTo(hash) {
 
   location.hash = "#" + hash;
 }
+
+function getStyle() {
+  return __webpack_require__(/*! ./theme.json */ "./resources/js/tau-prolog/theme.json");
+}
+
+function getWriteOptions() {
+  return {
+    session: session,
+    ignore_ops: true,
+    quoted: false,
+    numbervars: false
+  };
+}
+
+/***/ }),
+
+/***/ "./resources/js/tau-prolog/theme.json":
+/*!********************************************!*\
+  !*** ./resources/js/tau-prolog/theme.json ***!
+  \********************************************/
+/*! exports provided: font-size, font-family, border-width, border-color, padding, margin-x, margin-y, order, state, answer, error, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"font-size\":14,\"font-family\":\"Monospace, Courier New\",\"border-width\":2,\"border-color\":\"#333333\",\"padding\":5,\"margin-x\":10,\"margin-y\":20,\"order\":{\"radius\":15,\"background-color\":\"#f2ebdf\",\"border-width\":4,\"border-color\":\"#333333\",\"font-color\":\"#333333\"},\"state\":{\"background-color\":\"#a5dfe2\",\"border-width\":4,\"border-color\":\"#333333\",\"font-color\":\"#333333\"},\"answer\":{\"background-color\":\"#a2fc9e\",\"border-width\":4,\"border-color\":\"#333333\",\"font-color\":\"#333333\"},\"error\":{\"background-color\":\"#d36363\",\"border-width\":4,\"border-color\":\"#333333\",\"font-color\":\"#333333\"}}");
 
 /***/ }),
 

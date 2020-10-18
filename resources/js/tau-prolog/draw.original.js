@@ -1,4 +1,4 @@
-var pl = window.pl;
+var pl;
 (function(pl) {
   var width = function(ctx, font, margin, padding) {
     ctx.font = font;
@@ -142,7 +142,6 @@ var pl = window.pl;
       // Get nodes by level
       var levels = get_states_by_level(parent);
       draw(levels, canvas, styles);
-      saveCanvasCode();
     };
     thread.format_success = id;
     thread.format_error = id;
@@ -337,22 +336,22 @@ var pl = window.pl;
       offset_y = offset_z;
     }
     // Add click event
-    // var click_draw = function() {
-    //   window.open(canvas.toDataURL(), "_blank");
-    // };
-    // if (canvas.addEventListener) {
-    //   if (canvas.click_draw)
-    //     canvas.removeEventListener("click", canvas.click_draw);
-    //   canvas.addEventListener("click", click_draw, false);
-    //   canvas.style.cursor = "pointer";
-    // } else {
-    //   if (canvas.attachEvent) {
-    //     if (canvas.click_draw) canvas.detachEvent("click", canvas.click_draw);
-    //     canvas.attachEvent("click", click_draw);
-    //     canvas.style.cursor = "pointer";
-    //   }
-    // }
-    // canvas.click_draw = click_draw;
+    var click_draw = function() {
+      window.open(canvas.toDataURL(), "_blank");
+    };
+    if (canvas.addEventListener) {
+      if (canvas.click_draw)
+        canvas.removeEventListener("click", canvas.click_draw);
+      canvas.addEventListener("click", click_draw, false);
+      canvas.style.cursor = "pointer";
+    } else {
+      if (canvas.attachEvent) {
+        if (canvas.click_draw) canvas.detachEvent("click", canvas.click_draw);
+        canvas.attachEvent("click", click_draw);
+        canvas.style.cursor = "pointer";
+      }
+    }
+    canvas.click_draw = click_draw;
   };
 
   if (typeof module !== "undefined") {
@@ -374,7 +373,3 @@ var pl = window.pl;
     };
   }
 })(pl);
-
-function saveCanvasCode() {
-  window.tree = document.getElementById("derivation").outerHTML;
-}

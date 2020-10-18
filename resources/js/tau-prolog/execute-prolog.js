@@ -8,13 +8,13 @@ window.evaluate = function evaluate(mouseClickEvent) {
       // Query
 
       const goal = getGoal(mouseClickEvent);
+
       //   console.log(goal);
       session.query(goal, {
         success: function(goal) {
+          session.draw(150, "derivation", getStyle(), getWriteOptions());
           session.answer({
             success: function(answer) {
-              session.draw(100, "derivation");
-
               showResult(session.format_answer(answer));
             },
             error: function(err) {
@@ -32,12 +32,14 @@ window.evaluate = function evaluate(mouseClickEvent) {
           });
         },
         error: function(err) {
+          window.tree = "";
           /* Error parsing goal */
           showError("Error parsing query! \n" + err);
         },
       });
     },
     error: function(err) {
+      window.tree = "";
       //   console.log(session.format_answer(err));
       showError("Error parsing program! \n" + err);
     },
@@ -67,7 +69,6 @@ function showResult(text) {
 
 function showError(text) {
   Livewire.emit("result", "error", text);
-  window.tree = "";
 }
 
 function scrollTo(hash) {
@@ -75,4 +76,17 @@ function scrollTo(hash) {
     location.hash = "";
   }
   location.hash = "#" + hash;
+}
+
+function getStyle() {
+  return require("./theme.json");
+}
+
+function getWriteOptions() {
+  return {
+    session: session,
+    ignore_ops: true,
+    quoted: false,
+    numbervars: false,
+  };
 }
