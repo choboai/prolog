@@ -34,7 +34,7 @@
 
     </div>
 
-    <form class="flex flex-col">
+    <div class="flex flex-col">
         <div class="mb-4 bg-gray-50 p-4 rounded-lg text-gray-600">
             <div class="mb-5">
                 <div class="flex items-center font-bold">
@@ -115,10 +115,12 @@
                         <button class="text-sm py-1 px-3 border border-gray-200 rounded-lg shadow-sm hover:shadow-md cursor-pointer" type="button" wire:click="createPrologQuery">add a new query</button>
                     </div>
                 </div>
-
-                <x-results :resultsLabel="$this->resultsLabel" :resultsClass="$this->resultsClass" :resultsText="$this->resultsText" />
+                <div>
+                    <x-results :resultsLabel="$this->resultsLabel" :resultsClass="$this->resultsClass" :resultsText="$this->resultsText" />
+                </div>
 
             </div>
         </div>
-    </form>
+    </div>
+    <x-derivation-tree />
 </div>

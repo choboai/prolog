@@ -1,4 +1,6 @@
-// require("./bootstrap");
+window.tree = "";
+
+require("./tau-prolog/execute-prolog");
 
 import Prism from "prismjs";
 
@@ -7,6 +9,29 @@ Prism.highlightAll();
 Livewire.hook("element.updated", () => {
   Prism.highlightAll();
 });
+
+window.copyButton = function copyButton() {
+  return {
+    isCopied: false,
+    isTextareaHidden: true,
+    copy(e) {
+      let prologCode = e.target.closest("button").parentNode.parentNode
+        .nextSibling.nextSibling.nextSibling.nextSibling;
+      prologCode.style.display = "block";
+      prologCode.previousSibling.previousSibling.style.display = "none";
+      this.isTextareaHidden = false;
+      prologCode.select();
+      prologCode.select();
+      prologCode.setSelectionRange(0, 99999); /*For mobile devices*/
+      document.execCommand("copy");
+
+      this.isCopied = true;
+    },
+    toggle() {
+      this.isTextareaHidden = false;
+    },
+  };
+};
 
 // var turbolinks = require("turbolinks");
 // // Turbolinks.start();
@@ -18,80 +43,3 @@ Livewire.hook("element.updated", () => {
 // document.addEventListener("turbolinks:load", function() {
 //   Prism.highlightAll();
 // });
-
-const pl = require("tau-prolog");
-
-const session = pl.create();
-
-window.evaluate = function evaluate(mouseClickEvent) {
-  // Consult
-  session.consult(getProgram(), {
-    success: function() {
-      // Query
-
-      const goal = getGoal(mouseClickEvent);
-      //   console.log(goal);
-      session.query(goal, {
-        success: function(goal) {
-          session.answer({
-            success: function(answer) {
-              showResult(session.format_answer(answer));
-            },
-            error: function(err) {
-              /* Uncaught error */
-              showError(err);
-            },
-            fail: function() {
-              /* Fail */
-              showError("false.");
-            },
-            limit: function() {
-              /* Limit exceeded */
-              showError("Limit exceeded");
-            },
-          });
-        },
-        error: function(err) {
-          /* Error parsing goal */
-          showError("Error parsing query! \n" + err);
-        },
-      });
-    },
-    error: function(err) {
-      showError("Error parsing program! \n" + err);
-    },
-  });
-  scrollTo("");
-  scrollTo("results");
-};
-
-function getProgram() {
-  const files = document.querySelectorAll(".prolog-files");
-  return Array.from(files)
-    .map((file) => getProgramFileValue(file))
-    .reduce((program, file) => program + "\n" + file);
-}
-
-function getProgramFileValue(file) {
-  return file.value;
-}
-
-function getGoal(mouseClickEvent) {
-  return mouseClickEvent.target.closest("button").parentNode.previousSibling
-    .previousSibling.value;
-}
-
-function showResult(text) {
-  Livewire.emit("result", "success", text);
-}
-
-function showError(text) {
-  Livewire.emit("result", "error", text);
-}
-
-function scrollTo(hash) {
-  if (hash === "") {
-    location.hash = "";
-  }
-  location.hash = "#" + hash;
-}
