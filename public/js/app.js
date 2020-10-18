@@ -2379,27 +2379,24 @@ window.copyButton = function copyButton() {
 var session = window.pl.create();
 
 window.evaluate = function evaluate(mouseClickEvent) {
-  // Consult
-  //   console.log(getProgram());
+  session = window.pl.create();
   session.consult(getProgram(), {
     success: function success() {
       // Query
-      var goal = getGoal(mouseClickEvent); //   console.log(goal);
-
+      var goal = getGoal(mouseClickEvent);
       session.query(goal, {
         success: function success(goal) {
-          session.draw(150, "derivation", getStyle(), getWriteOptions());
           session.answer({
             success: function success(answer) {
               showResult(session.format_answer(answer));
             },
             error: function error(err) {
               /* Uncaught error */
-              showError(err);
+              showError("Oops :\n" + err);
             },
-            fail: function fail() {
+            fail: function fail(answer) {
               /* Fail */
-              showError("false.");
+              showError(session.format_answer(answer));
             },
             limit: function limit() {
               /* Limit exceeded */
@@ -2408,17 +2405,31 @@ window.evaluate = function evaluate(mouseClickEvent) {
           });
         },
         error: function error(err) {
-          window.tree = "";
           /* Error parsing goal */
-
           showError("Error parsing query! \n" + err);
         }
       });
     },
     error: function error(err) {
-      window.tree = ""; //   console.log(session.format_answer(err));
-
       showError("Error parsing program! \n" + err);
+    }
+  });
+  session = window.pl.create();
+  session.consult(getProgram(), {
+    success: function success() {
+      // Query
+      var goal = getGoal(mouseClickEvent);
+      session.query(goal, {
+        success: function success(goal) {
+          session.draw(150, "derivation", getStyle(), getWriteOptions());
+        },
+        error: function error(err) {
+          window.tree = "";
+        }
+      });
+    },
+    error: function error(err) {
+      window.tree = "";
     }
   });
 };

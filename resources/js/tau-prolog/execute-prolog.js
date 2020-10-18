@@ -1,29 +1,24 @@
-const session = window.pl.create();
+let session = window.pl.create();
 
 window.evaluate = function evaluate(mouseClickEvent) {
-  // Consult
-  //   console.log(getProgram());
+  session = window.pl.create();
   session.consult(getProgram(), {
     success: function() {
       // Query
-
       const goal = getGoal(mouseClickEvent);
-
-      //   console.log(goal);
       session.query(goal, {
         success: function(goal) {
-          session.draw(150, "derivation", getStyle(), getWriteOptions());
           session.answer({
             success: function(answer) {
               showResult(session.format_answer(answer));
             },
             error: function(err) {
               /* Uncaught error */
-              showError(err);
+              showError("Oops :\n" + err);
             },
-            fail: function() {
+            fail: function(answer) {
               /* Fail */
-              showError("false.");
+              showError(session.format_answer(answer));
             },
             limit: function() {
               /* Limit exceeded */
@@ -32,16 +27,33 @@ window.evaluate = function evaluate(mouseClickEvent) {
           });
         },
         error: function(err) {
-          window.tree = "";
           /* Error parsing goal */
           showError("Error parsing query! \n" + err);
         },
       });
     },
     error: function(err) {
-      window.tree = "";
-      //   console.log(session.format_answer(err));
       showError("Error parsing program! \n" + err);
+    },
+  });
+
+  session = window.pl.create();
+
+  session.consult(getProgram(), {
+    success: function() {
+      // Query
+      const goal = getGoal(mouseClickEvent);
+      session.query(goal, {
+        success: function(goal) {
+          session.draw(150, "derivation", getStyle(), getWriteOptions());
+        },
+        error: function(err) {
+          window.tree = "";
+        },
+      });
+    },
+    error: function(err) {
+      window.tree = "";
     },
   });
 };
