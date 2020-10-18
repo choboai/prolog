@@ -2388,7 +2388,7 @@ window.evaluate = function evaluate(mouseClickEvent) {
 
       session.query(goal, {
         success: function success(goal) {
-          session.draw(1000, "derivation", getStyle(), getWriteOptions());
+          session.draw(150, "derivation", getStyle(), getWriteOptions());
           session.answer({
             success: function success(answer) {
               showResult(session.format_answer(answer));

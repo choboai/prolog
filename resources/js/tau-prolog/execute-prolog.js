@@ -12,7 +12,7 @@ window.evaluate = function evaluate(mouseClickEvent) {
       //   console.log(goal);
       session.query(goal, {
         success: function(goal) {
-          session.draw(1000, "derivation", getStyle(), getWriteOptions());
+          session.draw(150, "derivation", getStyle(), getWriteOptions());
           session.answer({
             success: function(answer) {
               showResult(session.format_answer(answer));
