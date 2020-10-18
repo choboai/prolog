@@ -22,8 +22,17 @@
         @stack('modals')
         @livewireScripts
 
-        <script src="{{ asset('js/tau-prolog/core.js') }}" defer></script>
-        <script src="{{ asset('js/tau-prolog/draw-derivation-trees.js') }}" defer></script>
+        <script src="{{ asset('js/tau-prolog/modules/core.js') }}"></script>
+        <script src="{{ asset('js/tau-prolog/modules/lists.js') }}"></script>
+        <script src="{{ asset('js/tau-prolog/modules/random.js') }}"></script>
+        <script src="{{ asset('js/tau-prolog/modules/statistics.js') }}"></script>
+        <script src="{{ asset('js/tau-prolog/modules/dom.js') }}"></script>
+        <script src="{{ asset('js/tau-prolog/modules/js.js') }}"></script>
+        <script src="{{ asset('js/tau-prolog/modules/os.js') }}"></script>
+        <script src="{{ asset('js/tau-prolog/modules/charsio.js') }}"></script>
+        <script src="{{ asset('js/tau-prolog/modules/format.js') }}"></script>
+
+        <script src="{{ asset('js/tau-prolog/draw-derivation-trees.js') }}"></script>
 
         <script src="{{ asset('js/app.js') }}" defer></script>
 
