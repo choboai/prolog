@@ -31,11 +31,7 @@
     </div>
 
     @if ($this->program->description)
-        <div class="mb-4 bg-gray-50 p-4 rounded-lg text-gray-600">
-            <x-markdown flavor="github" class="prose">
-                {!! $this->program->description !!}
-            </x-markdown>
-        </div>
+        <x-markdown-view :text="$this->program->description" class="mb-4" />
     @endif
 
     <div class="flex flex-col line-numbers">
@@ -52,7 +48,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <pre class="font-mono overflow-y-auto outline-none bg-blue-50 w-full py-2 px-4 rounded-md shadow text-left" style="max-height: 30em;"><code  class="language-prolog">{!! nl2br($prologFile->content ?? '% No code yet') !!}</code></pre>
+                            <pre class="font-mono overflow-y-auto outline-none bg-blue-50 w-full py-2 px-4 rounded-md shadow text-left" style="max-height: 30em;"><code  class="language-prolog">{!! nl2br($prologFile->content == '' ? '% No code yet' : $prologFile->content ) !!}</code></pre>
                             <textarea class="prolog-files hidden" name="content">{{ $prologFile->content }}</textarea>
                         </div>
                     @empty

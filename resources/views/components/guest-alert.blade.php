@@ -1,6 +1,6 @@
 @guest
 @if (request()->is('programs*'))
-    <div class="px-3 sm:px-6 lg:px-8 mb-4">
+    <div class="mb-4">
         <div class="max-w-7xl mx-auto rounded-md bg-yellow-50 p-4">
             <div class="flex">
             <div class="flex-shrink-0">

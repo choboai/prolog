@@ -17,3 +17,7 @@
 .results-error {
   @apply bg-red-700;
 }
+
+pre.array {
+  max-height: 30em;
+}
