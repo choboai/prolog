@@ -34,7 +34,7 @@
 
     </div>
 
-    <form class="flex flex-col">
+    <div class="flex flex-col">
         <div class="mb-4 bg-gray-50 p-4 rounded-lg text-gray-600">
             <div class="mb-5">
                 <div class="flex items-center font-bold">
@@ -45,9 +45,16 @@
                 <x-error class="text-red-500" field="program.name" />
             </div>
             <div class="flex mb-3">
-                <x-label class="flex-none w-20 mr-5 text-right font-bold text-gray-600" for="description" />
-                <div class="w-full">
+                <div class="flex-none w-20 mr-5 text-right ">
+                    <x-label class="font-bold text-gray-600" for="description" />
+                    <span class="font-bold text-xs text-gray-400">(markdown)</span>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 sm:gap-8 w-full">
                     <x-textarea class="w-full outline-none bg-blue-50 py-2 px-4 rounded-md shadow" name="description" wire:model="program.description" wire:keydown.debounce.200ms="save()" rows="4"></x-textarea>
+                    <div class="mt-2 sm:mt-0">
+                        <x-label class="font-bold text-gray-600" for="preview" />
+                        <x-markdown-view class="bg-gray-100 mt-2" :text="$this->program->description" />
+                    </div>
                 </div>
             </div>
             @auth
@@ -108,10 +115,12 @@
                         <button class="text-sm py-1 px-3 border border-gray-200 rounded-lg shadow-sm hover:shadow-md cursor-pointer" type="button" wire:click="createPrologQuery">add a new query</button>
                     </div>
                 </div>
-
-                <x-results :resultsLabel="$this->resultsLabel" :resultsClass="$this->resultsClass" :resultsText="$this->resultsText" />
+                <div>
+                    <x-results :resultsLabel="$this->resultsLabel" :resultsClass="$this->resultsClass" :resultsText="$this->resultsText" />
+                </div>
 
             </div>
         </div>
-    </form>
+    </div>
+    <x-derivation-tree />
 </div>

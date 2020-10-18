@@ -18,7 +18,15 @@
         {{-- @bukStyles --}}
 
         <!-- Scripts -->
+
+        @stack('modals')
+        @livewireScripts
+
+        <script src="{{ asset('js/tau-prolog/core.js') }}" defer></script>
+        <script src="{{ asset('js/tau-prolog/draw-derivation-trees.js') }}" defer></script>
+
         <script src="{{ asset('js/app.js') }}" defer></script>
+
         <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.2.1/dist/alpine.js" defer></script>
     </head>
     <body class="antialiased min-h-screen flex flex-col">
@@ -44,8 +52,6 @@
             </div>
         </footer>
 
-        @stack('modals')
-        @livewireScripts
         {{-- <script src="https://cdn.jsdelivr.net/gh/livewire/turbolinks@v0.1.x/dist/livewire-turbolinks.js" data-turbolinks-eval="false"></script> --}}
         {{-- @bukScripts --}}
 

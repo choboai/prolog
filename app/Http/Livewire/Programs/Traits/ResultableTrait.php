@@ -5,7 +5,7 @@ namespace App\Http\Livewire\Programs\Traits;
 trait ResultableTrait
 {
     /**
-     * @var string
+     * @var array|string
      */
     public $resultsText = 'Execute a query to get a result';
 
@@ -19,7 +19,13 @@ trait ResultableTrait
      */
     public $resultsLabel = 'Results';
 
-    public function saveResults(string $type, string $text): void
+    /**
+     *
+     * @param string $type
+     * @param mixed $text
+     * @return void
+     */
+    public function saveResults($type, $text): void
     {
         $classes = [
             'success' => 'results-success',

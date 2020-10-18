@@ -13,6 +13,11 @@ const mix = require("laravel-mix");
 
 mix
   .js("resources/js/app.js", "public/js")
+  .copy("node_modules/tau-prolog/modules/core.js", "public/js/tau-prolog")
+  .copy(
+    "resources/js/tau-prolog/draw-derivation-trees.js",
+    "public/js/tau-prolog"
+  )
   .postCss("resources/css/app.css", "public/css", [
     require("postcss-import"),
     require("tailwindcss"),

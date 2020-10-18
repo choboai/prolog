@@ -28,7 +28,9 @@ class Show extends Component
     /**
      * @var string[]
      */
-    protected $listeners = ['result' => 'saveResults'];
+    protected $listeners = [
+        'result' => 'saveResults',
+    ];
 
     /**
      * @return Collection
