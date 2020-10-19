@@ -45,7 +45,7 @@ window.evaluate = function evaluate(mouseClickEvent) {
       const goal = getGoal(mouseClickEvent);
       session.query(goal, {
         success: function(goal) {
-          session.draw(150, "derivation", getStyle(), getWriteOptions());
+          session.draw(100, "derivation", getStyle(), getWriteOptions());
         },
         error: function(err) {
           window.tree = "";

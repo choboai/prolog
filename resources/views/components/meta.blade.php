@@ -15,4 +15,4 @@
     :description="$description"
     :image="asset('storage/logo.jpg')"
 />
-<meta name="theme-color" content="#9f580a">
+<meta name="theme-color" content="#667eea">
