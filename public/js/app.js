@@ -2342,7 +2342,7 @@ window.copyButton = function copyButton() {
     isCopied: false,
     isTextareaHidden: true,
     copy: function copy(e) {
-      var prologCode = e.target.closest("button").parentNode.parentNode.nextSibling.nextSibling.nextSibling.nextSibling;
+      var prologCode = e.target.closest("button").parentNode.parentNode.parentNode.nextSibling.nextSibling.nextSibling.nextSibling;
       prologCode.style.display = "block";
       prologCode.previousSibling.previousSibling.style.display = "none";
       this.isTextareaHidden = false;
@@ -2448,7 +2448,12 @@ function getProgramFileValue(file) {
 }
 
 function getGoal(mouseClickEvent) {
-  return mouseClickEvent.target.closest("button").parentNode.previousSibling.previousSibling.value;
+  // page edit
+  if (mouseClickEvent.target.closest("button").parentNode.previousSibling.previousSibling.value != null) {
+    return mouseClickEvent.target.closest("button").parentNode.previousSibling.previousSibling.value;
+  }
+
+  return mouseClickEvent.target.closest("button").parentNode.parentNode.parentNode.nextSibling.nextSibling.nextSibling.nextSibling.value;
 }
 
 function showResult(text) {

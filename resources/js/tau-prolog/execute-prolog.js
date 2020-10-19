@@ -71,8 +71,16 @@ function getProgramFileValue(file) {
 }
 
 function getGoal(mouseClickEvent) {
-  return mouseClickEvent.target.closest("button").parentNode.previousSibling
-    .previousSibling.value;
+  // page edit
+  if (
+    mouseClickEvent.target.closest("button").parentNode.previousSibling
+      .previousSibling.value != null
+  ) {
+    return mouseClickEvent.target.closest("button").parentNode.previousSibling
+      .previousSibling.value;
+  }
+  return mouseClickEvent.target.closest("button").parentNode.parentNode
+    .parentNode.nextSibling.nextSibling.nextSibling.nextSibling.value;
 }
 
 function showResult(text) {

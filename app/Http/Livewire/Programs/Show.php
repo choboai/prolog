@@ -63,6 +63,7 @@ class Show extends Component
         $clone = $this->program->replicate();
         $clone->user_id = intval(Auth::id()) === 0 ? null : intval(Auth::id());
         $clone->team_id = null;
+        $clone->name = $clone->name . " (copy)";
         $clone->save();
 
         $this->program->prolog_files->each(function (PrologFile $file) use ($clone) {
