@@ -39,6 +39,8 @@ use InvalidArgumentException;
  * @method static Builder|Program whereIsPublic($value)
  * @method static Builder|Program whereTeamId($value)
  * @method static Builder|Program whereUserId($value)
+ * @property string|null $description
+ * @method static Builder|Program whereDescription($value)
  */
 class Program extends Model
 {

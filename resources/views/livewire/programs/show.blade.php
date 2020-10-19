@@ -1,4 +1,4 @@
-<div wire:poll.1000ms>
+<div wire:poll.5000ms>
 
     <div class="flex flex-col sm:flex-row justify-between sm:items-center mb-4">
         <div>

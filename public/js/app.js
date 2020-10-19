@@ -2766,9 +2766,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var prismjs_plugins_line_numbers_prism_line_numbers__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(prismjs_plugins_line_numbers_prism_line_numbers__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var prismjs_themes_prism_coy_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! prismjs/themes/prism-coy.css */ "./node_modules/prismjs/themes/prism-coy.css");
 /* harmony import */ var prismjs_themes_prism_coy_css__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(prismjs_themes_prism_coy_css__WEBPACK_IMPORTED_MODULE_5__);
-window.tree = "";
+__webpack_require__(/*! ./tabulation */ "./resources/js/tabulation.js");
+
+__webpack_require__(/*! ./copybtn */ "./resources/js/copybtn.js");
+
 
 smoothscroll_polyfill__WEBPACK_IMPORTED_MODULE_0___default.a.polyfill();
+window.tree = "";
 
 __webpack_require__(/*! ./tau-prolog/execute-prolog */ "./resources/js/tau-prolog/execute-prolog.js");
 
@@ -2781,6 +2785,15 @@ prismjs_components_prism_core__WEBPACK_IMPORTED_MODULE_1___default.a.highlightAl
 Livewire.hook("element.updated", function () {
   prismjs_components_prism_core__WEBPACK_IMPORTED_MODULE_1___default.a.highlightAll();
 });
+
+/***/ }),
+
+/***/ "./resources/js/copybtn.js":
+/*!*********************************!*\
+  !*** ./resources/js/copybtn.js ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
 
 window.copyButton = function copyButton() {
   return {
@@ -2803,14 +2816,34 @@ window.copyButton = function copyButton() {
       this.isTextareaHidden = false;
     }
   };
-}; // var turbolinks = require("turbolinks");
-// // Turbolinks.start();
-// document.addEventListener("livewire:load", function(event) {
-//   turbolinks.start();
-// });
-// document.addEventListener("turbolinks:load", function() {
-//   Prism.highlightAll();
-// });
+};
+
+/***/ }),
+
+/***/ "./resources/js/tabulation.js":
+/*!************************************!*\
+  !*** ./resources/js/tabulation.js ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// https://stackoverflow.com/questions/6637341/use-tab-to-indent-in-textarea
+var textareas = document.querySelectorAll("textarea");
+
+for (var index = 0; index < textareas.length; index++) {
+  var element = textareas[index];
+  element.addEventListener("keydown", function (e) {
+    if (e.key == "Tab") {
+      e.preventDefault();
+      var start = this.selectionStart;
+      var end = this.selectionEnd; // set textarea value to: text before caret + tab + text after caret
+
+      this.value = this.value.substring(0, start) + "\t" + this.value.substring(end); // put caret at right position again
+
+      this.selectionStart = this.selectionEnd = start + 1;
+    }
+  });
+}
 
 /***/ }),
 
@@ -2866,7 +2899,7 @@ window.evaluate = function evaluate(mouseClickEvent) {
       var goal = getGoal(mouseClickEvent);
       session.query(goal, {
         success: function success(goal) {
-          session.draw(150, "derivation", getStyle(), getWriteOptions());
+          session.draw(100, "derivation", getStyle(), getWriteOptions());
         },
         error: function error(err) {
           window.tree = "";

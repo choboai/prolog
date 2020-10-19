@@ -115,12 +115,13 @@
                         <button class="text-sm py-1 px-3 border border-gray-200 rounded-lg shadow-sm hover:shadow-md cursor-pointer" type="button" wire:click="createPrologQuery">add a new query</button>
                     </div>
                 </div>
-                <div>
-                    <x-results :resultsLabel="$this->resultsLabel" :resultsClass="$this->resultsClass" :resultsText="$this->resultsText" :program="$this->program" />
-                </div>
 
             </div>
         </div>
+    </div>
+
+    <div>
+        <x-results :resultsLabel="$this->resultsLabel" :resultsClass="$this->resultsClass" :resultsText="$this->resultsText" :program="$this->program" />
     </div>
     <x-derivation-tree />
 </div>
