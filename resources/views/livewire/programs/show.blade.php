@@ -111,7 +111,7 @@
     </div>
 
     <div>
-        <x-results :resultsLabel="$this->resultsLabel" :resultsClass="$this->resultsClass" :resultsText="$this->resultsText" />
+        <x-results :resultsLabel="$this->resultsLabel" :resultsClass="$this->resultsClass" :resultsText="$this->resultsText" :program="$this->program" />
     </div>
     <x-derivation-tree />
 </div>

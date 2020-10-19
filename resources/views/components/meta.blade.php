@@ -2,10 +2,11 @@
     $description = "Prolog programs manager";
     if (request()->is('programs')){
         $programCount = \App\Models\Program::count();
-        $description = "Prolog programs manager\n\n👨‍💻 {$programCount} programs and counting!";
+        $description = "Write, execute, visualise and share your Prolog programs\n\n🔥 {$programCount} programs and counting!";
     } else if (request()->is('programs/*')){
-        $programName = request()->program->name;
-        $description = "Program name:\n\n{$programName}" ?? 'Nameless program';
+        $programName = request()->program->name ?? 'Nameless program';
+        $programAuthor = request()->program->user->name ?? 'Guest user';
+        $description = "✨ Program name:\n{$programName}\n\n👨‍💻 Author:\n{$programAuthor}";
     }
 @endphp
 <x-social-meta

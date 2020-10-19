@@ -56,6 +56,7 @@ window.evaluate = function evaluate(mouseClickEvent) {
       window.tree = "";
     },
   });
+  document.querySelector("#results").scrollIntoView({ behavior: "smooth" });
 };
 
 function getProgram() {
