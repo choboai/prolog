@@ -40,7 +40,7 @@
                 <h2 class="text-2xl font-mono font-bold mr-5">Prolog files</h2>
                 <div>
                     @forelse ($this->prologFiles as $prologFile)
-                        <div x-data="{...copyButton()}" class="w-full p-4 text-center border border-gray-200 rounded-md my-4">
+                        <div x-data="{...copyButton()}" class="w-full px-4 pt-3 text-center border border-gray-200 rounded-md my-4">
                             <div class="mb-2 flex flex-col items-start">
                                 <div class="flex items-center justify-between w-full">
                                     <div class="text-left text-lg font-bold text-gray-600">
@@ -105,13 +105,13 @@
                     </div>
                 </div>
 
-                <div>
-                    <x-results :resultsLabel="$this->resultsLabel" :resultsClass="$this->resultsClass" :resultsText="$this->resultsText" />
-                </div>
 
             </div>
         </div>
     </div>
 
+    <div>
+        <x-results :resultsLabel="$this->resultsLabel" :resultsClass="$this->resultsClass" :resultsText="$this->resultsText" />
+    </div>
     <x-derivation-tree />
 </div>

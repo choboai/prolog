@@ -53,7 +53,7 @@
                     <x-textarea class="w-full outline-none bg-blue-50 py-2 px-4 rounded-md shadow" name="description" wire:model="program.description" wire:keydown.debounce.200ms="save()" rows="4"></x-textarea>
                     <div class="mt-2 sm:mt-0">
                         <x-label class="font-bold text-gray-600" for="preview" />
-                        <x-markdown-view class="bg-gray-100 mt-2" :text="$this->program->description" />
+                        <x-markdown-view class="bg-gray-100 mt-2" :text="$this->program->description ? $this->program->description : 'nothing to preview'" />
                     </div>
                 </div>
             </div>
