@@ -1,5 +1,8 @@
 window.tree = "";
 
+import smoothscroll from "smoothscroll-polyfill";
+smoothscroll.polyfill();
+
 require("./tau-prolog/execute-prolog");
 
 import Prism from "prismjs";
