@@ -16,7 +16,7 @@ window.copyButton = function copyButton() {
     isTextareaHidden: true,
     copy(e) {
       let prologCode = e.target.closest("button").parentNode.parentNode
-        .nextSibling.nextSibling.nextSibling.nextSibling;
+        .parentNode.nextSibling.nextSibling.nextSibling.nextSibling;
       prologCode.style.display = "block";
       prologCode.previousSibling.previousSibling.style.display = "none";
       this.isTextareaHidden = false;

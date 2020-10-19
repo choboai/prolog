@@ -42,18 +42,21 @@
                     @forelse ($this->prologFiles as $prologFile)
                         <div x-data="{...copyButton()}" class="w-full p-4 text-center border border-gray-200 rounded-md my-4">
                             <div class="mb-2 flex flex-col items-start">
-                                <div class="flex flex-col items-start sm:items-center sm:flex-row sm:justify-between w-full">
-                                    <div class="text-lg font-bold text-gray-600">
+                                <div class="flex items-center justify-between w-full">
+                                    <div class="text-left text-lg font-bold text-gray-600">
                                         {{ $prologFile->name ?? 'nameless file' }}
                                     </div>
-                                    <button @click="copy($event)" class="border border-gray-200 text-gray-700 px-1 py-1 rounded-lg text-sm font-bold transform hover:shadow" x-bind:class="{'bg-green-200': isCopied, 'border-green-400': isCopied, 'text-green-700': isCopied}">
-                                        <svg x-show="! isCopied" class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
-                                        </svg>
-                                        <svg x-show="isCopied" class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                                        </svg>
-                                    </button>
+                                    <div>
+
+                                        <button @click="copy($event)" class="border border-gray-200 text-gray-700 px-1 py-1 rounded-lg text-sm font-bold transform hover:shadow" x-bind:class="{'bg-green-200': isCopied, 'border-green-400': isCopied, 'text-green-700': isCopied}">
+                                            <svg x-show="! isCopied" class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+                                            </svg>
+                                            <svg x-show="isCopied" class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                            </svg>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                             <pre x-show="isTextareaHidden" class="font-mono overflow-y-auto outline-none bg-blue-50 w-full py-2 px-4 rounded-md shadow text-left" style="max-height: 30em;"><code @click="toggle" class="language-prolog">{!! nl2br($prologFile->content == '' ? '% No code yet' : $prologFile->content ) !!}</code></pre>
@@ -70,30 +73,31 @@
                     <div class="">
 
                         @forelse ($this->prologQueries as $prologQuery)
-                            <div x-data="{...copyButton()}" class="w-full p-4 text-center border border-gray-200 rounded-md my-4">
+                            <div x-data="{...copyButton()}" class="w-full px-4 pt-3 text-center border border-gray-200 rounded-md my-4">
                                 <div class="mb-2 flex flex-col items-start">
-                                    <div class="flex flex-col items-start sm:items-center sm:flex-row sm:justify-between w-full">
-                                        <div class="text-lg font-bold text-gray-600">
+                                    <div class="flex items-center justify-between w-full">
+                                        <div class="text-left text-lg font-bold text-gray-600">
                                             {{ $prologQuery->name ?? 'nameless query' }}
                                         </div>
-                                        <button @click="copy($event)" class="border border-gray-200 text-gray-700 px-1 py-1 rounded-lg text-sm font-bold transform hover:shadow" x-bind:class="{'bg-green-200': isCopied, 'border-green-400': isCopied, 'text-green-700': isCopied}">
-                                            <svg x-show="! isCopied" class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
-                                            </svg>
-                                            <svg x-show="isCopied" class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                                            </svg>
-                                        </button>
+                                        <div class="flex">
+
+                                            <button @click="copy($event)" class="border border-gray-200 text-gray-700 px-1 py-1 rounded-lg text-sm font-bold transform hover:shadow" x-bind:class="{'bg-green-200': isCopied, 'border-green-400': isCopied, 'text-green-700': isCopied}">
+                                                <svg x-show="! isCopied" class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+                                                </svg>
+                                                <svg x-show="isCopied" class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                                </svg>
+                                            </button>
+                                            <button x-data @click="evaluate($event)" class="ml-2 flex items-center text-sm py-1 px-1 border border-gray-200 rounded-lg shadow-sm hover:shadow-md cursor-pointer float-right" type="button">
+                                                <svg class="w-5 h-5 mr-1 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                                <span class="pr-1">Execute</span>
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
-                                <pre x-show="isTextareaHidden" class="font-mono overflow-y-auto outline-none bg-blue-50 w-full py-2 px-4 rounded-md shadow text-left" style="max-height: 30em;"><code  class="language-prolog">{!! nl2br($prologQuery->content ?? '% No code yet') !!}</code></pre>
+                                <pre x-show="isTextareaHidden" class="font-mono overflow-y-auto outline-none bg-blue-50 py-2 px-4 rounded-md shadow" style="max-height: 30em;"><code @click="toggle()" class="language-prolog">{!! nl2br($prologQuery->content ?? '% No code yet') !!}</code></pre>
                                 <textarea x-show="! isTextareaHidden" class="prolog-queries font-mono outline-none bg-blue-50 w-full py-2 px-4 rounded-md shadow" rows="3">{{ $prologQuery->content }}</textarea>
-                                <div class="h-8 mt-3">
-                                    <button x-data @click="evaluate($event)" class="inline-flex items-center text-sm py-1 px-3 border border-gray-200 rounded-lg shadow-sm hover:shadow-md cursor-pointer float-right" type="button">
-                                        <svg class="w-6 h-6 mr-1 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                        Execute
-                                    </button>
-                                </div>
                             </div>
                         @empty
                             <div class="w-full my-4 p-4 text-center border border-gray-200 rounded-md">no queries yet</div>
