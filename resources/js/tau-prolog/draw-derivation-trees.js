@@ -142,7 +142,7 @@ var pl = window.pl;
       // Get nodes by level
       var levels = get_states_by_level(parent);
       draw(levels, canvas, styles);
-      saveCanvasCode();
+      importCanvas(document.getElementById("derivation"));
     };
     thread.format_success = id;
     thread.format_error = id;
@@ -375,6 +375,18 @@ var pl = window.pl;
   }
 })(pl);
 
-function saveCanvasCode() {
-  window.tree = document.getElementById("derivation").outerHTML;
+function importCanvas(sourceCanvas) {
+  // get base64 encoded png data url from Canvas
+  window.treeDataUrl = sourceCanvas.toDataURL("image/png");
+  document
+    .querySelector("img#derivation-img")
+    .setAttribute("height", sourceCanvas.height);
+  document
+    .querySelector("img#derivation-img")
+    .setAttribute("width", sourceCanvas.width);
+
+  // Destruction du canvas
+  let canvasDiv = document.getElementById("derivation-canvas");
+  canvasDiv.innerHTML = "";
+  canvasDiv.innerHTML = '<canvas id="derivation"></canvas>';
 }
