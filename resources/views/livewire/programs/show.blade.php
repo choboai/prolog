@@ -97,7 +97,7 @@
                                     </div>
                                 </div>
                                 <pre x-show="isTextareaHidden" class="outline-none rounded-md shadow mb-4 text-left"><code @click="toggle()" class="hljs prolog" style="max-height: 30em;"><x-codehl :code="$prologQuery->content == '' ? '% No code yet' : $prologQuery->content"/></code></pre>
-                                <textarea x-show="! isTextareaHidden" class="prolog-queries font-mono outline-none bg-blue-50 w-full py-2 px-4 rounded-md shadow" rows="3">{{ $prologQuery->content }}</textarea>
+                                <textarea x-show="! isTextareaHidden" class="prolog-queries font-mono outline-none bg-blue-50 w-full py-2 px-4 rounded-md shadow mb-5" rows="3">{{ $prologQuery->content }}</textarea>
                             </div>
                         @empty
                             <div class="w-full my-4 p-4 text-center border border-gray-200 rounded-md">no queries yet</div>
