@@ -378,12 +378,13 @@ var pl = window.pl;
 function importCanvas(sourceCanvas) {
   // get base64 encoded png data url from Canvas
   window.treeDataUrl = sourceCanvas.toDataURL("image/png");
-  document
-    .querySelector("img#derivation-img")
-    .setAttribute("height", sourceCanvas.height);
-  document
-    .querySelector("img#derivation-img")
-    .setAttribute("width", sourceCanvas.width);
+  window.treeDataUrl.replace('', 'data:image/gif;base64,')
+  //   document
+  //     .querySelector("img#derivation-img")
+  //     .setAttribute("height", sourceCanvas.height);
+  //   document
+  //     .querySelector("img#derivation-img")
+  //     .setAttribute("width", sourceCanvas.width);
 
   // Destruction du canvas
   let canvasDiv = document.getElementById("derivation-canvas");

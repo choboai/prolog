@@ -2786,6 +2786,11 @@ Livewire.hook("element.updated", function () {
   prismjs_components_prism_core__WEBPACK_IMPORTED_MODULE_1___default.a.highlightAll();
 });
 
+window.openImage = function (event) {
+  var w = window.open("about:blank");
+  w.document.body.appendChild(w.document.createElement("img")).src = window.treeDataUrl;
+};
+
 /***/ }),
 
 /***/ "./resources/js/copybtn.js":
