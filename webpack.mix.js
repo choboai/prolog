@@ -14,6 +14,7 @@ const mix = require("laravel-mix");
 mix
   .js("resources/js/app.js", "public/js")
   .copy("node_modules/tau-prolog/modules/", "public/js/tau-prolog/modules")
+  .copy("vendor/scrivo/highlight.php/styles/github.css", "public/css/hl")
   .copy(
     "resources/js/tau-prolog/draw-derivation-trees.js",
     "public/js/tau-prolog"

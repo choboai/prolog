@@ -1,10 +1,5 @@
 {
     "plugins": [
-      ["prismjs", {
-          "languages": ["prolog"],
-          "plugins": ["line-numbers"],
-          "theme": "coy",
-          "css": true
-      }]
+
     ]
   }
