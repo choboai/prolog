@@ -1,4 +1,4 @@
-<div wire:poll.5000ms>
+<div wire:poll.1000ms>
 
     <div class="flex flex-col sm:flex-row justify-between sm:items-center mb-4">
         <div>
@@ -49,7 +49,7 @@
                                     <div>
 
                                         <button @click="copy($event)" class="border border-gray-200 text-gray-700 px-1 py-1 rounded-lg text-sm font-bold transform hover:shadow" x-bind:class="{'bg-green-200': isCopied, 'border-green-400': isCopied, 'text-green-700': isCopied}">
-                                            <svg x-show="! isCopied" class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <svg x-show="! isCopied" class="h-5 w-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
                                             </svg>
                                             <svg x-show="isCopied" class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -59,8 +59,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <pre x-show="isTextareaHidden" class="font-mono overflow-y-auto outline-none bg-blue-50 w-full py-2 px-4 rounded-md shadow text-left" style="max-height: 30em;"><code @click="toggle" class="language-prolog">{!! nl2br($prologFile->content == '' ? '% No code yet' : $prologFile->content ) !!}</code></pre>
-                            <textarea x-show="! isTextareaHidden" class="h-auto prolog-files font-mono outline-none bg-blue-50 w-full py-2 px-4 rounded-md shadow" rows="10">{{ $prologFile->content }}</textarea>
+                            <pre x-show="isTextareaHidden" class="outline-none rounded-md shadow mb-4 text-left" style="max-height: 30em;"><code @click="toggle" class="hljs prolog"><x-codehl :code="$prologFile->content == '' ? '% No code yet' : $prologFile->content"/>
+                            </code></pre><textarea x-show="! isTextareaHidden" class="h-auto prolog-files font-mono outline-none bg-blue-50 w-full py-2 px-4 rounded-md shadow mb-4" rows="10">{{ $prologFile->content }}</textarea>
                         </div>
                     @empty
                         <div class="w-full my-4 p-4 text-center border border-gray-200 rounded-md">no files yet</div>
@@ -82,7 +82,7 @@
                                         <div class="flex">
 
                                             <button @click="copy($event)" class="border border-gray-200 text-gray-700 px-1 py-1 rounded-lg text-sm font-bold transform hover:shadow" x-bind:class="{'bg-green-200': isCopied, 'border-green-400': isCopied, 'text-green-700': isCopied}">
-                                                <svg x-show="! isCopied" class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <svg x-show="! isCopied" class="h-5 w-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
                                                 </svg>
                                                 <svg x-show="isCopied" class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -96,7 +96,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <pre x-show="isTextareaHidden" class="font-mono overflow-y-auto outline-none bg-blue-50 py-2 px-4 rounded-md shadow" style="max-height: 30em;"><code @click="toggle()" class="language-prolog">{!! nl2br($prologQuery->content ?? '% No code yet') !!}</code></pre>
+                                <pre x-show="isTextareaHidden" class="outline-none rounded-md shadow mb-4 text-left" style="max-height: 30em;"><code @click="toggle()" class="hljs prolog"><x-codehl :code="$prologQuery->content == '' ? '% No code yet' : $prologQuery->content"/></code></pre>
                                 <textarea x-show="! isTextareaHidden" class="prolog-queries font-mono outline-none bg-blue-50 w-full py-2 px-4 rounded-md shadow" rows="3">{{ $prologQuery->content }}</textarea>
                             </div>
                         @empty

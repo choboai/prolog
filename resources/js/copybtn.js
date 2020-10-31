@@ -3,10 +3,24 @@ window.copyButton = function copyButton() {
     isCopied: false,
     isTextareaHidden: true,
     copy(e) {
-      let prologCode = e.target.closest("button").parentNode.parentNode
-        .parentNode.nextSibling.nextSibling.nextSibling.nextSibling;
+      let prologCode = null;
+      let prologHl = null;
+
+      if (
+        e.target.closest("button").parentNode.parentNode.parentNode.nextSibling
+          .nextSibling.nextSibling.nextSibling.style !== undefined
+      ) {
+        prologCode = e.target.closest("button").parentNode.parentNode.parentNode
+          .nextSibling.nextSibling.nextSibling.nextSibling;
+        prologHl = prologCode.previousSibling.previousSibling;
+      } else {
+        prologCode = e.target.closest("button").parentNode.parentNode.parentNode
+          .nextSibling.nextSibling.nextSibling;
+        prologHl = prologCode.previousSibling;
+      }
+
       prologCode.style.display = "block";
-      prologCode.previousSibling.previousSibling.style.display = "none";
+      prologHl.style.display = "none";
       this.isTextareaHidden = false;
       prologCode.select();
       prologCode.select();

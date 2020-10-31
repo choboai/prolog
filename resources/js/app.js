@@ -7,8 +7,10 @@ smoothscroll.polyfill();
 window.tree = "";
 require("./tau-prolog/execute-prolog");
 
-import Prism from "prismjs";
-Prism.highlightAll();
-Livewire.hook("element.updated", () => {
-  Prism.highlightAll();
-});
+window.openImage = () => {
+  var url = window.treeDataUrl;
+  var w = window.open("about:blank");
+  setTimeout(() => {
+    w.document.body.appendChild(w.document.createElement("img")).src = url;
+  }, 0);
+};

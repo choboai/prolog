@@ -1,5 +1,6 @@
 {
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
+    "/css/hl/github.css": "/css/hl/github.css",
     "/js/tau-prolog/draw-derivation-trees.js": "/js/tau-prolog/draw-derivation-trees.js"
 }
