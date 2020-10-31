@@ -141,7 +141,9 @@ var pl = window.pl;
       set_preorder_id(parent, 0);
       // Get nodes by level
       var levels = get_states_by_level(parent);
-      draw(levels, canvas, styles);
+      try {
+        draw(levels, canvas, styles);
+      } catch (error) {}
       importCanvas(document.getElementById("derivation"));
     };
     thread.format_success = id;
