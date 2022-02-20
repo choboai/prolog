@@ -26,6 +26,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @method static \Illuminate\Database\Eloquent\Builder|PrologQuery whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|PrologQuery whereProgramId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|PrologQuery whereUpdatedAt($value)
+ * @method static \Database\Factories\PrologQueryFactory factory(...$parameters)
  */
 class PrologQuery extends Model
 {

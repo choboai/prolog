@@ -41,6 +41,7 @@ use InvalidArgumentException;
  * @method static Builder|Program whereUserId($value)
  * @property string|null $description
  * @method static Builder|Program whereDescription($value)
+ * @method static \Database\Factories\ProgramFactory factory(...$parameters)
  */
 class Program extends Model
 {

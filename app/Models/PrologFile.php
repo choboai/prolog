@@ -26,6 +26,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @method static \Illuminate\Database\Eloquent\Builder|PrologFile whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|PrologFile whereProgramId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|PrologFile whereUpdatedAt($value)
+ * @method static \Database\Factories\PrologFileFactory factory(...$parameters)
  */
 class PrologFile extends Model
 {
