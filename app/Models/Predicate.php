@@ -27,6 +27,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @method static \Illuminate\Database\Eloquent\Builder|Predicate whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Predicate whereProgramId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Predicate whereUpdatedAt($value)
+ * @method static \Database\Factories\PredicateFactory factory(...$parameters)
  */
 class Predicate extends Model
 {

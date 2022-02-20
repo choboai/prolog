@@ -24,6 +24,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Atom wherePredicateId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Atom wherePredicatesListId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Atom whereUpdatedAt($value)
+ * @method static \Database\Factories\AtomFactory factory(...$parameters)
  */
 class Atom extends Model
 {

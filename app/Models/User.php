@@ -53,6 +53,7 @@ use Laravel\Sanctum\HasApiTokens;
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Program[] $programs
  * @property-read int|null $programs_count
+ * @method static \Database\Factories\UserFactory factory(...$parameters)
  */
 class User extends Authenticatable
 {

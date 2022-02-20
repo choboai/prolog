@@ -24,6 +24,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @method static \Illuminate\Database\Eloquent\Builder|Clause whereUpdatedAt($value)
  * @property int $program_id
  * @method static \Illuminate\Database\Eloquent\Builder|Clause whereProgramId($value)
+ * @method static \Database\Factories\ClauseFactory factory(...$parameters)
  */
 class Clause extends Model
 {
